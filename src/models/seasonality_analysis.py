@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import os
+
     
 
 def plot_and_head_average_rating_per_month(df):
@@ -103,7 +103,7 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_thre
         hovermode='closest' 
     )
     
-    fig.write_html("scr/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
+    fig.write_html("src/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
     
 
 def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 10):
@@ -174,7 +174,7 @@ def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interest
         height=700,
     )
     
-    fig.write_html("scr/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
+    fig.write_html("src/plots/beer_style_ranking_by_amount_subplot.html", include_plotlyjs="cdn")
 
 def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhold = 0.1):
     """

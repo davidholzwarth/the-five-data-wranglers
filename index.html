@@ -7,11 +7,57 @@ title: Home
 <html>
 <head>
     <title>Welcome</title>
+    <style>
+        iframe {
+            display: none; /* Hide iframe by default */
+        }
+    </style>
 </head>
 <body>
-    <h1>Data Story</h1>
+    <h1>Seasonal Bias</h1>
     <p>This is a placeholder. Put the data story here.</p>
-    <iframe src="scr/plots/beer_style_ranking_by_amount.html" width="100%" height="500px" frameborder="0"></iframe>
+    <input tyope="radio" id="subplot" onclick="showSubplot()">
+    <label for="subplot">Subplot</label>
+    <input tyope="radio" id="regular-plot" onclick="showSubplot()">
+    <label for="regular-plot">Regular plot</label>
+
+    <form>
+        <label>
+            <input type="radio" id="subplot" name="subplot"> Subplot
+        </label>
+        <label>
+            <input type="radio" id="singlplot" name="options"> Single plot
+        </label>
+    </form>
+
+    <iframe id="subplotfram" src="scr/plots/beer_style_ranking_by_amount_subplot.html" width="600" height="400"></iframe>
+    <iframe id="singleplotframe" src="scr/plots/beer_style_ranking_by_amount.html" width="600" height="400"></iframe>
+
+    <script>
+        // Get references to the radio button and iframe
+        const subplot = document.getElementById('subplot');
+        const singlplot = document.getElementById('singlplot');
+        const subplotframe = document.getElementById('subplotfram');
+        const singleplotframe = document.getElementById('singleplotframe');
+
+        // Add event listener to the radio buttons
+        subplot.addEventListener('change', function() {
+            if (subplot.checked) {
+                singleplotframe.style.display = 'none';  
+                subplotframe.style.display = 'block'; 
+            }
+        });
+
+        singlplot.addEventListener('change', function() {
+            if (singlplot.checked) {
+                subplotframe.style.display = 'none';  
+                singleplotframe.style.display = 'block'; 
+            }
+        });
+    </script>
 
 </body>
 </html>
+
+
+
