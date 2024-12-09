@@ -8,32 +8,41 @@ title: Home
 <head>
     <title>Welcome</title>
     <style>
-        iframe {
-            display: none; /* Hide iframe by default */
+        #subplot, #singleplot {
+            display: none; 
         }
     </style>
 </head>
 <body>
-    <h1>Seasonal Bias</h1>
-    <p>This is a placeholder. Put the data story here.</p> 
+    <h1>3 Influence of the season</h1>
+    <h2>3.1 Influence of the season on average rating</h2>
+    <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p> 
+
+    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month_.html"></iframe>
+
+
+    <p>We see that the average ratings do not change with the month, at least not significantly, thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the results are kind of boring. However, lets also have a look at how the beers get rated throughut the year depending on the beer style. </p>
+
+    <h2>3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
+    <p>Before we analyse the rating, let's first check which beer is a "summery" beer and which beers are "wintery", by comparing the amount of each reviewed by month. The graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year, in order to not crowd the graph with straight and uninteresting lines. The value of 14 was chosen as it offers a nice balance between not hiding important data and now not crowding the graph. The function also removes beer styles which have less than 500 reviews for at least one month, in order to not flood the analysis with beers which have few reviews, where the change in review count might not be significant.</p>
 
     <form>
         <label>
             <input type="radio" id="subplot" name="subplot"> Subplot
         </label>
         <label>
-            <input type="radio" id="singlplot" name="singleplot"> Single plot
+            <input type="radio" id="singleplot" name="singleplot"> Single plot
         </label>
     </form>
 
-    <iframe id="subplotfram" src="src/plots/beer_style_ranking_by_amount_subplot.html"></iframe>
+    <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html"></iframe>
     <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html"></iframe>
 
     <script>
         // Get references to the radio button and iframe
         const subplot = document.getElementById('subplot');
-        const singlplot = document.getElementById('singlplot');
-        const subplotframe = document.getElementById('subplotfram');
+        const singleplot = document.getElementById('singleplot');
+        const subplotframe = document.getElementById('subplotframe');
         const singleplotframe = document.getElementById('singleplotframe');
 
         // Add event listener to the radio buttons
@@ -42,21 +51,45 @@ title: Home
                 singleplotframe.style.display = 'none';  
                 subplotframe.style.display = 'block'; 
             } else {
+                subplot.checked = false
                 subplotframe.style.display = 'none';  
                 singleplotframe.style.display = 'block'; 
             }
         });
 
         singlplot.addEventListener('change', function() {
-            if (singlplot.checked) {
+            if (singleplot.checked) {
                 subplotframe.style.display = 'none';  
                 singleplotframe.style.display = 'block'; 
             } else {
+                singleplot.checked = false
                 singleplotframe.style.display = 'none';  
                 subplotframe.style.display = 'block'; 
             }
         });
     </script>
+
+    <p>Beers such as:
+        <ul>
+            <li>Czech Pilsner</li>
+            <li>Session IPA</li>
+            <li>Grodziskie </li>
+            <li>Kölsch and </li>
+            <li>Radler/Shandy</li>
+        </ul>
+        are rated more frequently in the summer, while:
+        <ul>
+            <li>English Strong Ale</li>
+            <li>Session IPA</li>
+            <li>Dunkler Bock and</li>
+            <li>Old ale</li>
+        </ul>
+        are reviewed more frequently in the winter. 
+
+        There is also a fun peak of Oktoberfestbeer during the months of September and Oktober, whcih (coincidentally?) coincides with the dates of the Oktoberfest celebrations, in which many cities celebrate the Oktoberfest-related festivals. With this in mind, lets have a look at how the ratings change across the year.
+
+        Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
+    </p>
 
 </body>
 </html>

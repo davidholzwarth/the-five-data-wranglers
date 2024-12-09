@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import plotly.express as px
 
     
 
@@ -15,13 +16,13 @@ def plot_and_head_average_rating_per_month(df):
 
     # Group by month and calculate the average rating
     monthly_avg_rating = df.groupby('month')['rating'].mean().reset_index()
-    print(monthly_avg_rating.head())
     
-    ax = monthly_avg_rating.plot.bar(x='month', y='rating')
-    ax.set_title("Average Rating per month RateBeers Dataset",)
-    ax.set_xlabel("Month")
-    ax.set_ylabel("Average Rating")
-    plt.show()
+    fig = px.bar(monthly_avg_rating, x='month', y='rating', title='Average Rating per month RateBeers Dataset')
+    fig.update_layout(
+        xaxis_title='Month',  
+        yaxis_title='Average Rating',   
+    )
+    fig.write_html("src/plots/average_rating_per_month.html", include_plotlyjs="cdn")
     
 def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
@@ -241,5 +242,5 @@ def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhol
         hovermode='closest' 
     )
 
-    fig.show()
+    fig.write_html("src/plots/beer_style_ranking_by_avg_score.html", include_plotlyjs="cdn")
     
