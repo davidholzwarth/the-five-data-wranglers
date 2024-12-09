@@ -3,6 +3,42 @@
 <head>
     <title>Welcome</title>
     <style>
+        /* Globale Einstellungen */
+        body {
+            font-family: Arial, sans-serif; /* Setzt die Schriftart für die gesamte Seite */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Zentriert den Inhalt horizontal */
+            text-align: center; /* Zentriert den Text */
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+            color: #0078d4;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        iframe, img {
+            display: block;
+            margin: 20px auto; /* Zentriert die Elemente horizontal */
+            max-width: 90%; /* Stellt sicher, dass die Diagramme auf kleineren Bildschirmen nicht überlaufen */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .scaled-image {
+            transform: scale(1); /* Setzt die Skalierung auf die Originalgröße */
+            transform-origin: center center; /* Zentriert die Transformation */
+            max-width: 90%; /* Verhindert, dass die Bilder größer als der Bildschirm werden */
+        }
+
         .flowchart {
             display: flex;
             flex-wrap: wrap;
@@ -62,19 +98,13 @@
             border: 5px solid transparent;
             border-left-color: #000;
         }
-        .scaled-image {
-            transform: scale(0.6);
-            transform-origin: top left;
-            display: block;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
     <h1>Data Story</h1>
     <p>This is a placeholder. Put the data story here gagagaga.</p>
-    <iframe src="src/plots/beer_style_ranking_by_amount.html" width="100%" height="500px" frameborder="0"></iframe>
-    <iframe src="src/plots/combined_distribution_and_rating_difference.html" width="100%" height="500px" frameborder="0"></iframe>
+    <iframe src="src/plots/beer_style_ranking_by_amount.html" width="80%" height="500px" frameborder="0"></iframe>
+    <iframe src="src/plots/combined_distribution_and_rating_difference.html" width="80%" height="500px" frameborder="0"></iframe>
     <img src="src/plots/imgs/differences_exp_inexp.png" alt="Differences Plot" class="scaled-image">
     <img src="src/plots/imgs/difference_foreign_domestic_barchart.png" alt="Differences Plot" class="scaled-image">
     <!--
