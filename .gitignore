@@ -14,6 +14,7 @@ _site
 *.swp
 *.zip
 *.vi
+*.csv
 *~
 
 # OS or Editor folders
@@ -41,3 +42,7 @@ validation-report.json
 # Folders to ignore
 node_modules
 bower_components
+BeerAdvocate
+matched_beer_data
+RateBeer
+__pycache__
