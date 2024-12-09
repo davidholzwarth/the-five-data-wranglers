@@ -15,23 +15,19 @@ title: Home
 </head>
 <body>
     <h1>Seasonal Bias</h1>
-    <p>This is a placeholder. Put the data story here.</p>
-    <input tyope="radio" id="subplot" onclick="showSubplot()">
-    <label for="subplot">Subplot</label>
-    <input tyope="radio" id="regular-plot" onclick="showSubplot()">
-    <label for="regular-plot">Regular plot</label>
+    <p>This is a placeholder. Put the data story here.</p> 
 
     <form>
         <label>
             <input type="radio" id="subplot" name="subplot"> Subplot
         </label>
         <label>
-            <input type="radio" id="singlplot" name="options"> Single plot
+            <input type="radio" id="singlplot" name="singleplot"> Single plot
         </label>
     </form>
 
-    <iframe id="subplotfram" src="scr/plots/beer_style_ranking_by_amount_subplot.html" width="600" height="400"></iframe>
-    <iframe id="singleplotframe" src="scr/plots/beer_style_ranking_by_amount.html" width="600" height="400"></iframe>
+    <iframe id="subplotfram" src="src/plots/beer_style_ranking_by_amount_subplot.html" width="600" height="400"></iframe>
+    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" width="600" height="400"></iframe>
 
     <script>
         // Get references to the radio button and iframe
