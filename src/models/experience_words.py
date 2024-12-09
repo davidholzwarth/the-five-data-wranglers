@@ -551,4 +551,4 @@ def save_plot_combined_distribution_and_rating_difference_with_ci(
     )
 
     # Save to HTML
-    fig.write_html("scr/plots/combined_distribution_and_rating_difference.html", include_plotlyjs="cdn")
+    fig.write_html("src/plots/combined_distribution_and_rating_difference.html", include_plotlyjs="cdn")

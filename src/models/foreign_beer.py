@@ -1,7 +1,7 @@
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scr.utils.evaluation_utils import *
+from src.utils.evaluation_utils import *
 import pandas as pd
 from plotly.subplots import make_subplots
 from plotly import graph_objects as go

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import os
-    
+
 
 def plot_and_head_average_rating_per_month(df):
     """
@@ -16,13 +16,13 @@ def plot_and_head_average_rating_per_month(df):
     # Group by month and calculate the average rating
     monthly_avg_rating = df.groupby('month')['rating'].mean().reset_index()
     print(monthly_avg_rating.head())
-    
+
     ax = monthly_avg_rating.plot.bar(x='month', y='rating')
     ax.set_title("Average Rating per month RateBeers Dataset",)
     ax.set_xlabel("Month")
     ax.set_ylabel("Average Rating")
     plt.show()
-    
+
 def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
     Calculate the ranking of beer styles by the amount of reviews per month
@@ -32,10 +32,10 @@ def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_th
     :param interesting_threshhold: the minimum difference in max and min to be considered interesting. Default value 10
     """
     df['month'] = pd.to_datetime(df['date'], unit = 's').dt.month
-    
+
     # Filters based on styles provided
     df_filtered = df[df['style'].isin(styles)]
-    
+
     # Group by month and style, and count the number of reviews per month and style
     ranked_by_amount_beer_styles_per_season = df_filtered.groupby(['month', 'style']).size().reset_index(name='review_count')
 
@@ -61,13 +61,13 @@ def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_th
     # Calculate the difference between the max and min review count for each row
     rank_change = beer_style_ranking_by_amount.max(axis=1) - beer_style_ranking_by_amount.min(axis=1)
 
-    styles_with_low_change = rank_change >= interesting_threshhold #Filter 
+    styles_with_low_change = rank_change >= interesting_threshhold #Filter
 
     beer_style_ranking_by_amount = beer_style_ranking_by_amount[styles_with_low_change]
 
     return beer_style_ranking_by_amount
-    
-    
+
+
 def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
     Calculate the ranking of beer styles by the amount of reviews per month
@@ -84,8 +84,8 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_thre
         x = beer_style_ranking_by_amount.columns  # Months
         y = beer_style_ranking_by_amount.loc[style]  # Ranks for this style
         fig.add_trace(go.Scatter(
-            x=x,  
-            y=y,  
+            x=x,
+            y=y,
             mode='lines+markers',
             name=style,
             hovertemplate=f'{style}'
@@ -100,11 +100,11 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_thre
     fig.update_layout(
         title='Monthly Rankings of Beer Styles by Review Count',
         legend_title='Beer Style',
-        hovermode='closest' 
+        hovermode='closest'
     )
-    
-    fig.write_html("scr/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
-    
+
+    fig.write_html("src/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
+
 
 def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
@@ -116,19 +116,19 @@ def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interest
     beer_style_ranking_by_amount = filter_beer_style_ranking_by_amount(df, styles, cutoff, interesting_threshhold)
     nr_cols = 3
     nr_rows = len(beer_style_ranking_by_amount)//nr_cols if len(beer_style_ranking_by_amount)%nr_cols == 0 else len(beer_style_ranking_by_amount)//nr_cols + 1
-    
+
     fig = make_subplots(
-        rows=nr_rows, 
-        cols=nr_cols, 
-        shared_xaxes="all",  
-        shared_yaxes="all", 
+        rows=nr_rows,
+        cols=nr_cols,
+        shared_xaxes="all",
+        shared_yaxes="all",
         x_title = "Month",
         y_title = "Rank",
     )
-    
+
     row_current = 1
     column_current = 1
-    
+
     # Calculating range for y axis
     all_y_values = beer_style_ranking_by_amount.values.flatten()
     y_min = min(all_y_values)
@@ -138,15 +138,15 @@ def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interest
         x = beer_style_ranking_by_amount.columns  # Months
         y = beer_style_ranking_by_amount.loc[style]  # Ranks for this style
         fig.add_trace(go.Scatter(
-            x=x,  
-            y=y,  
+            x=x,
+            y=y,
             mode='lines+markers',
             name=style,
             text=[style] * len(x),
             hovertemplate=(
-                '<b>Style: %{text}</b><br>' 
-                '<b>Month: %{x}</b><br>'  
-                '<b>Rank: %{y}</b><br>'    
+                '<b>Style: %{text}</b><br>'
+                '<b>Month: %{x}</b><br>'
+                '<b>Rank: %{y}</b><br>'
                 '<extra></extra>'
             ),
         ), row=row_current, col=column_current)
@@ -154,11 +154,11 @@ def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interest
         if column_current > nr_cols:
             column_current = 1
             row_current += 1
-            
+
     # Reverse y-axis so that rank 1 is at the top
     fig.update_yaxes(
-        range=[y_min, y_max], 
-        autorange='reversed', 
+        range=[y_min, y_max],
+        autorange='reversed',
         automargin=True
     )
 
@@ -173,8 +173,8 @@ def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interest
         hovermode='closest',
         height=700,
     )
-    
-    fig.write_html("scr/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
+
+    fig.write_html("src/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
 
 def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhold = 0.1):
     """
@@ -186,7 +186,7 @@ def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhol
     """
     # Group by month and style, and count the average rating (average score) per month and style
     ranked_by_avg_score_beer_styles_per_season = df.groupby(['month', 'style'])['rating'].agg(
-        avg_score='mean', 
+        avg_score='mean',
         review_count='count').reset_index()
 
     ##  Filter out styles with less than cutoff reviews ---
@@ -222,8 +222,8 @@ def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhol
         x = beer_style_ranking_by_avg_score.columns  # Months
         y = beer_style_ranking_by_avg_score.loc[style]  # Avg. score for this style
         fig.add_trace(go.Scatter(
-            x=x,  
-            y=y,  
+            x=x,
+            y=y,
             mode='lines+markers',
             name=style,
             hovertemplate=f'{style}'
@@ -238,8 +238,8 @@ def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhol
     fig.update_layout(
         title='Monthly Rankings of Beer Styles by Average Score',
         legend_title='Beer Style',
-        hovermode='closest' 
+        hovermode='closest'
     )
 
     fig.show()
-    
+
