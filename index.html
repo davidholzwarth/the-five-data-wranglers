@@ -26,8 +26,8 @@ title: Home
         </label>
     </form>
 
-    <iframe id="subplotfram" src="src/plots/beer_style_ranking_by_amount_subplot.html" width="600" height="400"></iframe>
-    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" width="600" height="400"></iframe>
+    <iframe id="subplotfram" src="src/plots/beer_style_ranking_by_amount_subplot.html"></iframe>
+    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html"></iframe>
 
     <script>
         // Get references to the radio button and iframe
@@ -41,6 +41,9 @@ title: Home
             if (subplot.checked) {
                 singleplotframe.style.display = 'none';  
                 subplotframe.style.display = 'block'; 
+            } else {
+                subplotframe.style.display = 'none';  
+                singleplotframe.style.display = 'block'; 
             }
         });
 
@@ -48,6 +51,9 @@ title: Home
             if (singlplot.checked) {
                 subplotframe.style.display = 'none';  
                 singleplotframe.style.display = 'block'; 
+            } else {
+                singleplotframe.style.display = 'none';  
+                subplotframe.style.display = 'block'; 
             }
         });
     </script>
