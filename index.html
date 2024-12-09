@@ -18,7 +18,7 @@ title: Home
     <h2>3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p> 
 
-    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month_.html"></iframe>
+    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html"></iframe>
 
 
     <p>We see that the average ratings do not change with the month, at least not significantly, thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the results are kind of boring. However, lets also have a look at how the beers get rated throughut the year depending on the beer style. </p>
@@ -28,15 +28,15 @@ title: Home
 
     <form>
         <label>
-            <input type="radio" id="subplot" name="subplot"> Subplot
+            <input type="radio" id="subplot" name="plotType"> Subplot
         </label>
         <label>
-            <input type="radio" id="singleplot" name="singleplot"> Single plot
+            <input type="radio" id="singleplot" name="plotType"> Single plot
         </label>
     </form>
 
-    <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html"></iframe>
-    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html"></iframe>
+    <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html" height="800" width="600"></iframe>
+    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="800" width="600"></iframe>
 
     <script>
         // Get references to the radio button and iframe
