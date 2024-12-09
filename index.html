@@ -18,7 +18,7 @@ title: Home
     <h2>3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p> 
 
-    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html" height="600" width="600"></iframe>
+    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html" height="600" width="700"></iframe>
 
 
     <p>We see that the average ratings do not change with the month, at least not significantly, thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the results are kind of boring. However, lets also have a look at how the beers get rated throughut the year depending on the beer style. </p>
@@ -28,11 +28,11 @@ title: Home
 
     <input type="radio" id="subplot" name="plotType"> 
     <label for="subplot">Subplot</label>
-    <input type="radio" id="singleplot" name="plotType"> 
+    <input type="radio" id="singleplot" name="plotType" checked> 
     <label for="singleplot">Single Plot</label>
 
-    <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html" height="600" width="600"></iframe>
-    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="600" width="600"></iframe>
+    <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html" height="600" width="700"></iframe>
+    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="600" width="700"></iframe>
 
     <script>
         // Get references to the radio button and iframe
@@ -78,7 +78,7 @@ title: Home
 
         Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
     </p>
-    <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="600"></iframe>
+    <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
 
 </body>
 </html>
