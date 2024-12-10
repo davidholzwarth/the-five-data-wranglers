@@ -239,9 +239,10 @@ def avg_rating_by_location(df_users_ratings):
     )
 
 
-def plot_mean_rating_by_location(df_plot):
+def plot_mean_rating_by_location(df_plot, save=True):
     """
     Plots the mean rating over all remaining countries.
+    :param save: whether we want to save or show the plot
     :param df_plot: result of avg_rating_by_location
     :return: Nothing
     """
@@ -269,7 +270,7 @@ def plot_mean_rating_by_location(df_plot):
         col=1,
     )
     fig.update_yaxes(
-        title_text="Average rating in logarithmic scale", type="log", row=1, col=1
+        title_text="Average rating", type="log", row=1, col=1
     )
 
     fig.add_trace(
@@ -287,7 +288,10 @@ def plot_mean_rating_by_location(df_plot):
         title_text="Average Rating Per Country",
     )
 
-    fig.show()
+    if save:
+        fig.write_html("src/plots/world_avg_map.html")
+    else:
+        fig.show()
 
 
 def plot_mean_rating_and_rating_count(df_plot, top50, log_scale=True):
