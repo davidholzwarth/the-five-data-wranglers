@@ -289,7 +289,71 @@ def plot_mean_rating_by_location(df_plot, save=True):
     )
 
     if save:
-        fig.write_html("src/plots/world_avg_map2.html")
+        fig.write_html("src/plots/world_avg_map.html")
+    else:
+        fig.show()
+
+
+# In the following I split up the two plots from above because I had problems with the zoom function
+# in the combined plot on the web page
+def plot_bar_chart(df_plot, save=True):
+    """
+    Plots the mean rating as a bar chart.
+    :param save: whether we want to save or show the plot
+    :param df_plot: result of avg_rating_by_location
+    :return: Nothing
+    """
+    df_plot = df_plot.to_frame()
+    df_plot.insert(0, "location", df_plot.index)
+    df_plot.reset_index(drop=True, inplace=True)
+    df_plot.sort_values(ascending=False, by="rating", inplace=True)
+
+    fig = go.Figure(
+        data=[
+            go.Bar(
+                x=df_plot["location"],
+                y=df_plot["rating"],
+                marker=dict(color=colors * (len(df_plot) + 1 // len(colors)))
+            )
+        ]
+    )
+
+    fig.update_yaxes(title_text="Average rating", type="log")
+    fig.update_layout(title_text="Average Rating Per Country (Bar Chart)")
+
+    if save:
+        fig.write_html("src/plots/bar_chart_avg_rating.html")
+    else:
+        fig.show()
+
+
+def plot_choropleth_map(df_plot, save=True):
+    """
+    Plots the mean rating as a choropleth map.
+    :param save: whether we want to save or show the plot
+    :param df_plot: result of avg_rating_by_location
+    :return: Nothing
+    """
+    df_plot = df_plot.to_frame()
+    df_plot.insert(0, "location", df_plot.index)
+    df_plot.reset_index(drop=True, inplace=True)
+    df_plot.sort_values(ascending=False, by="rating", inplace=True)
+
+    fig = go.Figure(
+        data=[
+            go.Choropleth(
+                locations=df_plot["location"],
+                locationmode="country names",
+                z=df_plot["rating"],
+                text="Average rating on linear scale"
+            )
+        ]
+    )
+
+    fig.update_layout(title_text="Average Rating Per Country (Choropleth Map)")
+
+    if save:
+        fig.write_html("src/plots/choropleth_map_avg_rating.html")
     else:
         fig.show()
 
