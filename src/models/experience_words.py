@@ -572,9 +572,6 @@ def save_plot_separate_distribution_and_rating_difference_with_ci(
     rating_diff_df = rating_diff_df.reindex(diff_plot_df.index).fillna(0)
     dist_diff_df = dist_diff_df.reindex(diff_plot_df.index).fillna(0)
 
-    # Import Plotly
-    import plotly.graph_objects as go
-
     # First Plot: Distribution Difference
     fig_dist = go.Figure()
     fig_dist.add_trace(
@@ -671,11 +668,11 @@ def plot_user_data(
     """
     # Define colors
     colors = ['#1f77b4', '#ff7f0e']  # Blue for experienced, orange for inexperienced
+    labels = ['Experienced', 'Inexperienced']
 
     # Data for pie charts
     user_counts = [num_exp_users, num_inexp_users]
     rating_counts = [num_ratings_exp, num_ratings_inexp]
-    labels = ['Experienced', 'Inexperienced']
 
     # Data for bar chart
     avg_ratings = [avg_exp, avg_inexp]
@@ -684,35 +681,54 @@ def plot_user_data(
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
 
     # Pie chart for user counts
-    axes[0].pie(
+    wedges, _, autotexts = axes[0].pie(
         user_counts,
-        labels=labels,
         autopct='%1.1f%%',
         colors=colors,
         startangle=90,
         wedgeprops={'edgecolor': 'black'}
     )
-    axes[0].set_title('User Count Distribution', fontsize=14)
+    axes[0].set_title('User Count Distribution', fontsize=18)
 
     # Bar chart for average ratings
-    axes[1].bar(labels, avg_ratings, color=colors, edgecolor='black')
-    axes[1].set_title('Average Ratings', fontsize=14)
-    axes[1].set_ylabel('Rating', fontsize=12)
+    bars = axes[1].bar(labels, avg_ratings, color=colors, edgecolor='black')
+    axes[1].set_title('Average Ratings', fontsize=18)
+    axes[1].set_ylabel('Rating', fontsize=18)
     axes[1].set_ylim(0, max(avg_ratings) + 1)  # Add some padding to y-axis
+    axes[1].tick_params(axis='x', labelsize=18)
+    axes[1].tick_params(axis='y', labelsize=18)
+
+    # Add values inside the bars
+    for bar in bars:
+        height = bar.get_height()
+        axes[1].text(
+            bar.get_x() + bar.get_width() / 2,  # X-coordinate (center of the bar)
+            height - 0.5,  # Y-coordinate (slightly below the top)
+            f'{height:.1f}',  # Value with 1 decimal place
+            ha='center', va='bottom', fontsize=18, color='white', fontweight='bold'
+        )
 
     # Pie chart for rating counts
-    axes[2].pie(
+    wedges2, _, autotexts2 = axes[2].pie(
         rating_counts,
-        labels=labels,
         autopct='%1.1f%%',
         colors=colors,
         startangle=90,
         wedgeprops={'edgecolor': 'black'}
     )
-    axes[2].set_title('Rating Count Distribution', fontsize=14)
+    axes[2].set_title('Rating Count Distribution', fontsize=18)
+
+    # Set font size for pie chart text
+    for text in autotexts + autotexts2:
+        text.set_fontsize(18)
+
+    # Add a central legend
+    fig.legend(
+        wedges, labels, loc='upper center', ncol=2, fontsize=18, frameon=False, bbox_to_anchor=(0.5, 0.95)
+    )
 
     # Adjust layout
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0, 1, 0.9])  # Leave space for the legend
 
     # Handle mode
     if mode == "show":
@@ -726,4 +742,3 @@ def plot_user_data(
         print(f"Plot saved as {output_file}")
     else:
         raise ValueError("Invalid mode. Use 'show' to display or 'save' to save the plot.")
-
