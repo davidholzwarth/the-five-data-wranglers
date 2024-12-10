@@ -9,14 +9,17 @@ title: Home
     <title>Welcome</title>
     <style>
         #subplotframe {
-            display: none; 
+            display: none;
         }
     </style>
 </head>
 <body>
+    <h1>1 Influence of the user's experience</h1>
+    <h2>1.3 Analysis of experience based on the user's vocabulary</h2>
+    <p>This is a small test.</p>
     <h1>3 Influence of the season</h1>
     <h2>3.1 Influence of the season on average rating</h2>
-    <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p> 
+    <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p>
 
     <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html" height="600" width="700"></iframe>
 
@@ -26,9 +29,9 @@ title: Home
     <h2>3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
     <p>Before we analyse the rating, let's first check which beer is a "summery" beer and which beers are "wintery", by comparing the amount of each reviewed by month. The graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year, in order to not crowd the graph with straight and uninteresting lines. The value of 14 was chosen as it offers a nice balance between not hiding important data and now not crowding the graph. The function also removes beer styles which have less than 500 reviews for at least one month, in order to not flood the analysis with beers which have few reviews, where the change in review count might not be significant.</p>
 
-    <input type="radio" id="subplot" name="plotType"> 
+    <input type="radio" id="subplot" name="plotType">
     <label for="subplot">Subplot</label>
-    <input type="radio" id="singleplot" name="plotType" checked> 
+    <input type="radio" id="singleplot" name="plotType" checked>
     <label for="singleplot">Single Plot</label>
 
     <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html" height="600" width="700"></iframe>
@@ -48,7 +51,7 @@ title: Home
                 singleplotframe.style.display = 'none'; // Hide single plot frame
             }
         });
-        
+
         singleplot.addEventListener('change', function () {
             if (singleplot.checked) {
                 subplotframe.style.display = 'none'; // Hide subplot frame
@@ -72,7 +75,7 @@ title: Home
             <li>Dunkler Bock and</li>
             <li>Old ale</li>
         </ul>
-        are reviewed more frequently in the winter. 
+        are reviewed more frequently in the winter.
 
         There is also a fun peak of Oktoberfestbeer during the months of September and Oktober, whcih (coincidentally?) coincides with the dates of the Oktoberfest celebrations, in which many cities celebrate the Oktoberfest-related festivals. With this in mind, lets have a look at how the ratings change across the year.
 
