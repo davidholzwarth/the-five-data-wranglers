@@ -4,6 +4,7 @@ import re
 import numpy as np
 from scipy.stats import t
 import plotly.graph_objects as go
+import mpld3
 
 # these are some possibilities of what one could consider
 # "word that only experienced beer consumers would use in there beer review"
@@ -648,3 +649,195 @@ def save_plot_separate_distribution_and_rating_difference_with_ci(
     )
     # Save Rating Difference Plot
     fig_rating.write_html("src/plots/rating_difference.html", include_plotlyjs="cdn")
+
+
+def plot_exp_inexp_stats(
+    num_exp_users, num_inexp_users, num_ratings_exp, num_ratings_inexp, avg_exp, avg_inexp
+):
+    """
+    Generates a plot with 3 subplots to visualize user and rating data for experienced and inexperienced users.
+    """
+    # Define colors
+    colors = ['#1f77b4', '#ff7f0e']  # Blue for experienced, orange for inexperienced
+
+    # Data for pie charts
+    user_counts = [num_exp_users, num_inexp_users]
+    rating_counts = [num_ratings_exp, num_ratings_inexp]
+    labels = ['Experienced', 'Inexperienced']
+
+    # Data for bar chart
+    avg_ratings = [avg_exp, avg_inexp]
+
+    # Create the figure and subplots
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+
+    # Pie chart for user counts
+    axes[0].pie(
+        user_counts,
+        labels=labels,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops={'edgecolor': 'black'}
+    )
+    axes[0].set_title('User Count Distribution', fontsize=14)
+
+    # Bar chart for average ratings
+    axes[1].bar(labels, avg_ratings, color=colors, edgecolor='black')
+    axes[1].set_title('Average Ratings', fontsize=14)
+    axes[1].set_ylabel('Rating', fontsize=12)
+    axes[1].set_ylim(0, max(avg_ratings) + 1)  # Add some padding to y-axis
+
+    # Pie chart for rating counts
+    axes[2].pie(
+        rating_counts,
+        labels=labels,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops={'edgecolor': 'black'}
+    )
+    axes[2].set_title('Rating Count Distribution', fontsize=14)
+
+    # Adjust layout and show the plot
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_user_data_html(
+    num_exp_users, num_inexp_users, num_ratings_exp, num_ratings_inexp, avg_exp, avg_inexp, output_file="plot.html"
+):
+    """
+    Generates a plot with 3 subplots to visualize user and rating data for experienced and inexperienced users
+    and saves it as an HTML file for embedding in a website.
+    """
+    # Define colors
+    colors = ['#1f77b4', '#ff7f0e']  # Blue for experienced, orange for inexperienced
+
+    # Data for pie charts
+    user_counts = [num_exp_users, num_inexp_users]
+    rating_counts = [num_ratings_exp, num_ratings_inexp]
+    labels = ['Experienced', 'Inexperienced']
+
+    # Data for bar chart
+    avg_ratings = [avg_exp, avg_inexp]
+
+    # Create the figure and subplots
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+
+    # Pie chart for user counts
+    axes[0].pie(
+        user_counts,
+        labels=labels,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops={'edgecolor': 'black'}
+    )
+    axes[0].set_title('User Count Distribution', fontsize=14)
+
+    # Bar chart for average ratings
+    axes[1].bar(labels, avg_ratings, color=colors, edgecolor='black')
+    axes[1].set_title('Average Ratings', fontsize=14)
+    axes[1].set_ylabel('Rating', fontsize=12)
+    axes[1].set_ylim(0, max(avg_ratings) + 1)  # Add some padding to y-axis
+
+    # Pie chart for rating counts
+    axes[2].pie(
+        rating_counts,
+        labels=labels,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops={'edgecolor': 'black'}
+    )
+    axes[2].set_title('Rating Count Distribution', fontsize=14)
+
+    # Adjust layout
+    plt.tight_layout()
+
+    # Save the figure as an interactive HTML file
+    html_str = mpld3.fig_to_html(fig)
+    with open(output_file, "w") as f:
+        f.write(html_str)
+
+    # Optionally, show the plot (comment out if not needed)
+    plt.show()
+
+
+def plot_user_data(
+    num_exp_users, num_inexp_users, num_ratings_exp, num_ratings_inexp, avg_exp, avg_inexp, mode="show",
+    output_file="plot.html"
+):
+    """
+    Generates a plot with 3 subplots to visualize user and rating data for experienced and inexperienced users.
+    Depending on the mode, the plot is either shown ('show') or saved as an HTML file ('save').
+
+    Parameters:
+        - num_exp_users: Number of experienced users.
+        - num_inexp_users: Number of inexperienced users.
+        - num_ratings_exp: Number of ratings by experienced users.
+        - num_ratings_inexp: Number of ratings by inexperienced users.
+        - avg_exp: Average rating for experienced users.
+        - avg_inexp: Average rating for inexperienced users.
+        - mode: 'show' to display the plot, 'save' to save as an HTML file.
+        - output_file: File name for saving the HTML file (default: 'plot.html').
+    """
+    # Define colors
+    colors = ['#1f77b4', '#ff7f0e']  # Blue for experienced, orange for inexperienced
+
+    # Data for pie charts
+    user_counts = [num_exp_users, num_inexp_users]
+    rating_counts = [num_ratings_exp, num_ratings_inexp]
+    labels = ['Experienced', 'Inexperienced']
+
+    # Data for bar chart
+    avg_ratings = [avg_exp, avg_inexp]
+
+    # Create the figure and subplots
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+
+    # Pie chart for user counts
+    axes[0].pie(
+        user_counts,
+        labels=labels,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops={'edgecolor': 'black'}
+    )
+    axes[0].set_title('User Count Distribution', fontsize=14)
+
+    # Bar chart for average ratings
+    axes[1].bar(labels, avg_ratings, color=colors, edgecolor='black')
+    axes[1].set_title('Average Ratings', fontsize=14)
+    axes[1].set_ylabel('Rating', fontsize=12)
+    axes[1].set_ylim(0, max(avg_ratings) + 1)  # Add some padding to y-axis
+
+    # Pie chart for rating counts
+    axes[2].pie(
+        rating_counts,
+        labels=labels,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops={'edgecolor': 'black'}
+    )
+    axes[2].set_title('Rating Count Distribution', fontsize=14)
+
+    # Adjust layout
+    plt.tight_layout()
+
+    # Handle mode
+    if mode == "show":
+        # Show the plot
+        plt.show()
+    elif mode == "save":
+        # Save the figure as an interactive HTML file
+        html_str = mpld3.fig_to_html(fig)
+        with open(output_file, "w") as f:
+            f.write(html_str)
+        print(f"Plot saved as {output_file}")
+    else:
+        raise ValueError("Invalid mode. Use 'show' to display or 'save' to save the plot.")
+
