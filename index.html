@@ -37,6 +37,11 @@ title: Home
     <p>This plot provides perhaps the most interesting insight so far. We find that experienced users rate almost all beer styles <em>lower on average</em> than inexperienced drinkers, with the exceptions of "Witbier" and "American Adjunct Lager." This suggests that with greater experience, drinkers tend to have higher standards for their beers. Thus, when reading a review from an inexperienced versus an experienced beer drinker for the same beer, one should consider this potential bias in shaping expectations or assessments.</p>
     <p>We already observed this difference in average ratings at the beginning when we calculated the overall average rating across all beer styles. Now, however, we can see the breakdown by each individual beer style. This additional information can help us better account for rating bias when assessing a particular review.</p>
 
+    <h1>2 Influence of the location</h1>
+    <h2>2.1 Examining beer patriotism</h2>
+    <h2>2.2 Analyzing the influence of the user-brewery distance</h2>
+
+
     <h1>3 Influence of the season</h1>
     <h2>3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p>
@@ -102,7 +107,7 @@ title: Home
         Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
     </p>
     <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
-
+    <h1>4 Taking bias into account</h1>
 </body>
 </html>
 
