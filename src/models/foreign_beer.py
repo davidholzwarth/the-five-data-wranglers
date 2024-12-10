@@ -319,7 +319,8 @@ def plot_bar_chart(df_plot, save=True):
     )
 
     fig.update_yaxes(title_text="Average rating", type="log")
-    fig.update_layout(title_text="Average Rating Per Country (Bar Chart)")
+    fig.update_layout(title_text="Average Rating Per Country (Bar Chart)",
+                      xaxis=dict(tickangle=90))
 
     if save:
         fig.write_html("src/plots/bar_chart_avg_rating.html")
