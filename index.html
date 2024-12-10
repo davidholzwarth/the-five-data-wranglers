@@ -34,7 +34,8 @@ title: Home
     <img src="src/plots/imgs/probability_difference_exp_inexp.png" alt="Differences between mean ratings of experienced/inexperienced users grouped by style">
     <p>In the plot the beer styles are ordered by the total number of ratings for that style, meaning that "American IPA" is the beer styles which the most ratings are about. We can already learn quite a lot from this plot. Interestingly, the only 3 beer styles that make up a clearly larger proportion of the ratings among inexperienced users are also the 3 beer styles that are generally rated the highest. This means that particularly popular beers are even more popular among inexperienced beer users than among experienced beer users. This also makes sense, because if you are just starting to get interested in beer, you are unlikely to start with a specialty beer, but rather drink a beer that is available in the supermarket. Conversely, the difference for all other beers is either negligible or the beer style makes up a larger proportion of the experienced raters than the inexperienced ones. This gives us some confidence that the word metric we have established seems to correspond to our natural understanding of “experience”. But let us now turn to the mean rating. Just as we showed the difference in the proportions between the two groups in the previous plot, we will now show the difference in the mean rating between the two groups for the beer styles.</p>
     <img src="src/plots/imgs/rating_difference_exp_inexp.png" alt="Difference in the mean rating between experienced and inexperienced users.">
-
+    <p>This plot provides perhaps the most interesting insight so far. We find that experienced users rate almost all beer styles <em>lower on average</em> than inexperienced drinkers, with the exceptions of "Witbier" and "American Adjunct Lager." This suggests that with greater experience, drinkers tend to have higher standards for their beers. Thus, when reading a review from an inexperienced versus an experienced beer drinker for the same beer, one should consider this potential bias in shaping expectations or assessments.</p>
+    <p>We already observed this difference in average ratings at the beginning when we calculated the overall average rating across all beer styles. Now, however, we can see the breakdown by each individual beer style. This additional information can help us better account for rating bias when assessing a particular review.</p>
 
     <h1>3 Influence of the season</h1>
     <h2>3.1 Influence of the season on average rating</h2>
@@ -96,7 +97,7 @@ title: Home
         </ul>
         are reviewed more frequently in the winter.
 
-        There is also a fun peak of Oktoberfestbeer during the months of September and Oktober, whcih (coincidentally?) coincides with the dates of the Oktoberfest celebrations, in which many cities celebrate the Oktoberfest-related festivals. With this in mind, lets have a look at how the ratings change across the year.
+        There is also a fun peak of Oktoberfest beer during the months of September and Oktober, which (coincidentally?) coincides with the dates of the Oktoberfest celebrations, in which many cities celebrate the Oktoberfest-related festivals. With this in mind, lets have a look at how the ratings change across the year.
 
         Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
     </p>
