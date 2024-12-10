@@ -552,3 +552,99 @@ def save_plot_combined_distribution_and_rating_difference_with_ci(
 
     # Save to HTML
     fig.write_html("src/plots/combined_distribution_and_rating_difference.html", include_plotlyjs="cdn")
+
+
+def save_plot_separate_distribution_and_rating_difference_with_ci(
+    plot_df, rating_diff_df, dist_diff_df
+):
+    """
+    Plots the difference in the distribution of ratings over beer styles between experienced / non-experienced users
+    and also the average rating over beer styles between experienced and non-experienced
+    users with confidence intervals, then saves each as an interactive HTML file.
+    """
+    # Calculate the difference between the two groups for distribution
+    diff_plot_df = pd.DataFrame(
+        {"Difference": plot_df["Experienced"] - plot_df["Inexperienced"]}
+    )
+
+    # Reindex the rating_diff_df and dist_diff_df to match plot_df's index
+    rating_diff_df = rating_diff_df.reindex(diff_plot_df.index).fillna(0)
+    dist_diff_df = dist_diff_df.reindex(diff_plot_df.index).fillna(0)
+
+    # Import Plotly
+    import plotly.graph_objects as go
+
+    # First Plot: Distribution Difference
+    fig_dist = go.Figure()
+    fig_dist.add_trace(
+        go.Bar(
+            x=dist_diff_df.index,
+            y=dist_diff_df["Difference"],
+            name="Probability Difference",
+        )
+    )
+    fig_dist.add_trace(
+        go.Scatter(
+            x=dist_diff_df.index,
+            y=dist_diff_df["Difference"] + dist_diff_df["ci_95"],
+            mode="lines",
+            line=dict(width=0.5, dash="dash"),
+            name="95% CI Upper",
+        )
+    )
+    fig_dist.add_trace(
+        go.Scatter(
+            x=dist_diff_df.index,
+            y=dist_diff_df["Difference"] - dist_diff_df["ci_95"],
+            mode="lines",
+            line=dict(width=0.5, dash="dash"),
+            name="95% CI Lower",
+        )
+    )
+    fig_dist.update_layout(
+        title="Difference in beer style distribution between experienced and non-experienced users",
+        xaxis_title="Beer Styles",
+        yaxis_title="Probability Difference",
+        height=600,
+        width=800,
+    )
+    # Save Distribution Difference Plot
+    fig_dist.write_html("src/plots/distribution_difference.html", include_plotlyjs="cdn")
+
+    # Second Plot: Rating Difference
+    fig_rating = go.Figure()
+    fig_rating.add_trace(
+        go.Bar(
+            x=rating_diff_df.index,
+            y=rating_diff_df["Rating Difference"],
+            name="Rating Difference",
+            marker_color="orange",
+        )
+    )
+    fig_rating.add_trace(
+        go.Scatter(
+            x=rating_diff_df.index,
+            y=rating_diff_df["Rating Difference"] + rating_diff_df["ci_95"],
+            mode="lines",
+            line=dict(width=0.5, dash="dash"),
+            name="95% CI Upper",
+        )
+    )
+    fig_rating.add_trace(
+        go.Scatter(
+            x=rating_diff_df.index,
+            y=rating_diff_df["Rating Difference"] - rating_diff_df["ci_95"],
+            mode="lines",
+            line=dict(width=0.5, dash="dash"),
+            name="95% CI Lower",
+        )
+    )
+    fig_rating.update_layout(
+        title="Difference in average beer style rating between experienced and non-experienced users",
+        xaxis_title="Beer Styles",
+        yaxis_title="Rating Difference",
+        height=600,
+        width=800,
+    )
+    # Save Rating Difference Plot
+    fig_rating.write_html("src/plots/rating_difference.html", include_plotlyjs="cdn")
