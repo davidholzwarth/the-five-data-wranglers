@@ -11,8 +11,8 @@ def load_rating_wo_text(path):
 
 
 def load_user_data(
-    ba_path="data/BeerAdvocate/users.csv",
-    rb_path="data/RateBeer/users.csv",
+    ba_path="src/data/BeerAdvocate/users.csv",
+    rb_path="src/data/RateBeer/users.csv",
 ):
     """
     Loads the users.csv for both datasets
@@ -25,7 +25,7 @@ def load_user_data(
     return df_ba_users, df_rb_users
 
 
-def load_brewery_data(brewery_path="./data/RateBeer/breweries.csv"):
+def load_brewery_data(brewery_path="src/data/RateBeer/breweries.csv"):
     """
     Loading the brewery dataset.
     CAUTION: The location attribute is renamed to brewery_location.

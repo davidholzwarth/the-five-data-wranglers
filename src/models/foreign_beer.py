@@ -761,11 +761,12 @@ def filter_usa_duplicates(df_rb, df_ba, cols):
     return result
 
 
-def plot_avg_ratings_map(avg_ratings_per_location):
+def plot_avg_ratings_map(avg_ratings_per_location, save=True):
     """
     Plots an interactive map of the USA showing the difference in average ratings by state.
     The color intensity reflects the difference value, and hovering over a state displays its name and value.
 
+    :param save: whether we want to save or show the graphic
     :param avg_ratings_per_location: DataFrame containing states and the difference in ratings.
     :return: Nothing (plots an interactive map).
     """
@@ -802,4 +803,7 @@ def plot_avg_ratings_map(avg_ratings_per_location):
     fig.update_traces(hovertemplate="<b>%{location}</b><br>Difference: %{z:.2f}")
 
     # Show the plot
-    fig.show()
+    if save:
+        fig.write_html("src/plots/US_map.html")
+    else:
+        fig.show()
