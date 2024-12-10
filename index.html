@@ -25,7 +25,9 @@ title: Home
         <li>Have ten reviews containing a word from the word list.</li>
     </ol><p>With this definition in place, we are able to proceed with further analyses based on this experience-based classification.</p>
      <img src="src/plots/imgs/output.png" alt="Basic stats">
-
+    <p>We can see, that just 6.4% of the users are considered expert users with this metric. On the other hand more than two thirds of all the ratings are written by these users. This means that most of the ratings on the platform are written by a small fraction of the users with a consistent interest in beer. Concerning their rating behavior, in the middle plot we can see that there is a slight difference, as experienced users rate 0.1 points worse on average. But we have to investigate further in this.</p>
+    <p>We can make a more in-depth analysis by calculating statistics for both groups for every beer style individually. Like that we could see, whether there are beer styles that are "beginner-friendly" or which grow on you with time but might not suit your taste when you first try them. In the following plot we first show what proportion of ratings of each group which beer styles make up.</p>
+    <img src="src/plots/imgs/probability_difference_exp_inexp.png" alt="Differences between mean ratings of experienced/inexperienced users grouped by style">
     <h1>3 Influence of the season</h1>
     <h2>3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p>
