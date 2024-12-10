@@ -289,7 +289,7 @@ def plot_mean_rating_by_location(df_plot, save=True):
     )
 
     if save:
-        fig.write_html("src/plots/world_avg_map.html")
+        fig.write_html("src/plots/world_avg_map2.html")
     else:
         fig.show()
 
