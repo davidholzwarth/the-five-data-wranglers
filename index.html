@@ -219,6 +219,13 @@ title: Home
                 </ol>`,
                 ' ')">
         </div>
+
+        <div class="hotspot hotspot-2" style="top: 0px; left: 0px; width: 20px; height: 20px;"
+             onclick="showDetails('',
+                `<p>Here, we compute the inner product of the word distributions for the keywords we defined, derived from negative reviews about this beer and negative reviews by this user. The inner product will be larger the more similar these distributions are. Thus, if a specific keyword appears frequently in negative reviews about the beer we want to predict and also frequently in the negative reviews of the user for whom we are predicting, it will contribute to the inner product. </p>
+                 <p> The idea behind this is that if a user particularly dislikes <em>acidic</em> beers, they will often use the word <em>acidic</em> in their negative ratings. Similarly, if a beer is especially acidic, other users who rate this beer negatively will likely also use the word frequently. In this way, we aim to determine how well the beer matches the user's personal aversions.</p>`,
+                ' ')">
+        </div>
     </div>
 
     <div class="info-box" id="info-box">
