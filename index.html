@@ -244,21 +244,42 @@ title: Home
         <!-- Beer mean node -->
         <div class="hotspot hotspot-2" style="top: 110px; left: 23px; width: 82px; height: 18px;"
              onclick="showDetails('',
-                ``,
+                `We also include the average rating of all other users for this beer in our prediction.`,
                 ' ')">
         </div>
 
         <!-- Month node -->
         <div class="hotspot hotspot-2" style="top: 33px; left: 23px; width: 82px; height: 18px;"
              onclick="showDetails('',
-                `Some Text`,
+                `We include the month in which the rating occurs as an additional temporal bias, as we have already identified it as a highly significant feature in Section 3.`,
                 ' ')">
         </div>
 
         <!-- MLP node 1-->
         <div class="hotspot" style="top: 152px; left: 281px; width: 39px; height: 18px;"
              onclick="showDetails('',
-                ``,
+                `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
+                ' ')">
+        </div>
+
+        <!-- MLP node 2-->
+        <div class="hotspot" style="top: 172px; left: 281px; width: 39px; height: 18px;"
+             onclick="showDetails('',
+                `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
+                ' ')">
+        </div>
+
+        <!-- MLP node 3-->
+        <div class="hotspot" style="top: 412px; left: 281px; width: 39px; height: 18px;"
+             onclick="showDetails('',
+                `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
+                ' ')">
+        </div>
+
+        <!-- MLP node 4-->
+        <div class="hotspot" style="top: 432px; left: 281px; width: 39px; height: 18px;"
+             onclick="showDetails('',
+                `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
                 ' ')">
         </div>
 
