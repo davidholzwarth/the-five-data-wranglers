@@ -30,11 +30,23 @@
             margin-top: 20px;
         }
 
+        .arrow .placeholder {
+            font-size: 48px;
+            margin: 0 10px;
+        }
+
         .arrow .flag {
             width: 120px;
             height: auto;
             margin: 0 10px;
+            visibility: hidden;
+            opacity: 0;
             transition: 0.3s;
+        }
+
+        .arrow .flag.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         #flag-right {
@@ -84,12 +96,14 @@
 <body>
     <div class="container">
         <div class="arrow" id="interactive-arrow">
-            <img src="https://flagcdn.com/w320/us.png" alt="USA Flag" class="flag hidden" id="flag-left">
+            <span class="placeholder" id="placeholder-left">?</span>
+            <img src="https://flagcdn.com/w320/us.png" alt="USA Flag" class="flag" id="flag-left">
             <div class="arrow-line">
                 <span class="icon" id="icon">☠️</span>
                 <div class="arrow-head"></div>
             </div>
-            <img src="https://flagcdn.com/w320/sv.png" alt="El Salvador Flag" class="flag hidden" id="flag-right">
+            <img src="https://flagcdn.com/w320/sv.png" alt="El Salvador Flag" class="flag" id="flag-right">
+            <span class="placeholder" id="placeholder-right">?</span>
         </div>
     </div>
 
@@ -98,13 +112,16 @@
             const leftFlag = document.getElementById('flag-left');
             const rightFlag = document.getElementById('flag-right');
             const icon = document.getElementById('icon');
+            const placeholderLeft = document.getElementById('placeholder-left');
+            const placeholderRight = document.getElementById('placeholder-right');
 
             // Show the flags
-            leftFlag.classList.remove('hidden');
             leftFlag.classList.add('visible');
-
-            rightFlag.classList.remove('hidden');
             rightFlag.classList.add('visible');
+
+            // Hide placeholders
+            placeholderLeft.style.display = 'none';
+            placeholderRight.style.display = 'none';
 
             // Replace skull with the rating
             icon.textContent = "1.81";
