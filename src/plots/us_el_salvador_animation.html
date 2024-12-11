@@ -31,15 +31,19 @@
         }
 
         .arrow .placeholder {
+            display: inline-block; /* Damit es ähnlich wie die Flaggen behandelt wird */
+            width: 120px; /* Gleiche Breite wie die Flaggen */
+            height: 48px; /* Angemessene Höhe für die Schriftgröße */
             font-size: 48px;
+            text-align: center;
             margin: 0 10px;
-            transition: 0.3s;
+            line-height: 48px; /* Vertikales Zentrieren des Textes */
         }
 
         .arrow .flag {
             width: 120px;
             height: auto;
-            margin: 0 40px;
+            margin: 0 10px;
             visibility: hidden;
             opacity: 0;
             transition: 0.3s;
@@ -51,7 +55,7 @@
         }
 
         #flag-right {
-            margin-left: 20px;
+            margin-left: 10px; /* Gleicher Abstand wie die Platzhalter */
         }
 
         .arrow .arrow-line {
