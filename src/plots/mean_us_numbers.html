@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Ratings Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 2rem;
+            transform: rotate(-2deg);
+        }
+
+        .number-container {
+            text-align: center;
+            transform: rotate(2deg);
+            transition: transform 0.3s ease, font-size 0.3s ease;
+        }
+
+        .number {
+            font-size: 5rem;
+            color: #333;
+            margin: 0;
+            transition: font-size 0.3s ease;
+        }
+
+        .label {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .number-container:hover {
+            transform: scale(1.1) rotate(0deg);
+        }
+
+        .number-container:hover .number {
+            font-size: 6rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="number-container">
+            <p class="number">3.77</p>
+            <p class="label">Average Rating for US-Beer</p>
+        </div>
+        <div class="number-container">
+            <p class="number">3.59</p>
+            <p class="label">Average Rating for Non-US-Beer</p>
+        </div>
+    </div>
+</body>
+</html>
