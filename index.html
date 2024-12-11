@@ -23,7 +23,13 @@ title: Home
             cursor: pointer;
         }
         .hotspot:hover {
-            background-color: rgba(255, 0, 0, 0.5); /* Hovering over it changes the color so the user knows its clickable */
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+        .hotspot-1:hover {
+            background-color: rgba(0, 255, 0, 0.5);
+        }
+        .hotspot-2:hover {
+            background-color: rgba(0, 0, 255, 0.5);
         }
         .info-box {
             margin-top: 20px;
@@ -163,12 +169,13 @@ title: Home
         Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
     </p>
     <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
+
     <h1>4 Taking bias into account</h1>
     <div class="image-container">
         <img id="main-image" src="src/plots/imgs/flowchart.png" alt="Flowchart of the feature extraction" />
         <div class="hotspot" style="top: 45px; left: 760px; width: 260px; height: 910px;" onclick="showDetails('src/plots/imgs/nn_details.jpg', 'Here are the detailed insights about the selected section:')"></div>
-        <div class="hotspot" style="top: 150px; left: 500px; width: 200px; height: 200px;" onclick="showDetails('', 'Placeholder text for this area.')"></div>
-        <div class="hotspot" style="top: 300px; left: 300px; width: 150px; height: 150px;" onclick="showDetails('', 'Another placeholder text for a different area.')"></div>
+        <div class="hotspot hotspot-1" style="top: 150px; left: 500px; width: 200px; height: 200px;" onclick="showDetails('', 'Placeholder text for this area.')"></div>
+        <div class="hotspot hotspot-2" style="top: 300px; left: 300px; width: 150px; height: 150px;" onclick="showDetails('', 'Another placeholder text for a different area.')"></div>
     </div>
     <div class="info-box" id="info-box">
         <p id="info-text">Click on the boxes to learn more!</p>
