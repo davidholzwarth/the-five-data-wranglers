@@ -7,11 +7,6 @@ title: Home
 <html>
 <head>
     <title>Review of reviewers - Exposing Beer Reviewers' Biases</title>
-    <style>
-        #subplotframe {
-            display: none; 
-        }
-    </style>
 </head>
 <body>
     <h1>1. Influence of reviewer's experience </h1>
@@ -53,36 +48,7 @@ title: Home
         Before we analyse the rating, let's first check which beer is a "summery" beer and which beers are "wintery", by comparing the amount of each reviewed by month. The graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year, in order to not crowd the graph with straight and uninteresting lines. The value of 14 was chosen as it offers a nice balance between not hiding important data and now not crowding the graph. The function also removes beer styles which have less than 500 reviews for at least one month, in order to not flood the analysis with beers which have few reviews, where the change in review count might not be significant.
     </p>
 
-    <input type="radio" id="subplot" name="plotType"> 
-    <label for="subplot">Subplot</label>
-    <input type="radio" id="singleplot" name="plotType" checked> 
-    <label for="singleplot">Single Plot</label>
-
-    <iframe id="subplotframe" src="src/plots/beer_style_ranking_by_amount_subplot.html" height="700" width="700"></iframe>
     <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="700" width="700"></iframe>
-
-    <script>
-        // Get references to the radio button and iframe
-        const subplot = document.getElementById('subplot');
-        const singleplot = document.getElementById('singleplot');
-        const subplotframe = document.getElementById('subplotframe');
-        const singleplotframe = document.getElementById('singleplotframe');
-
-        // Add event listener to the radio buttons
-        subplot.addEventListener('change', function () {
-            if (subplot.checked) {
-                subplotframe.style.display = 'block'; // Show subplot frame
-                singleplotframe.style.display = 'none'; // Hide single plot frame
-            }
-        });
-        
-        singleplot.addEventListener('change', function () {
-            if (singleplot.checked) {
-                subplotframe.style.display = 'none'; // Hide subplot frame
-                singleplotframe.style.display = 'block'; // Show single plot frame
-            }
-        });
-    </script>
 
     <p>Beers such as:
         <ul>
