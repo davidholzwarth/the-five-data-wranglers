@@ -39,11 +39,13 @@ title: Home
 
     <h1>2 Influence of the location</h1>
     <h2>2.1 Examining beer patriotism</h2>
+    <h3>2.1.1 Domestic and foreign beer</h3>
     <p>Another factor that can enter into the user's evaluation as a bias is the country from which he or the beer comes. It is hard to deny that the nationality and culture of the country of origin can have a major influence on the evaluation of any cultural asset - and beer is a foodstuff and therefore also a cultural asset. So it could be that ratings from users from more wine-oriented countries such as France and Italy are different to those from more beer-oriented countries such as the northern European states. So let's start with a simple analysis and look at the average rating of users from a particular country.</p>
     <iframe src="src/plots/bar_chart_avg_rating.html" height="600" width="700"></iframe>
     <iframe src="src/plots/choropleth_map_avg_rating.html" height="600" width="700"></iframe>
     <p>We can already observe some interesting things here. For example, we can see that the countries whose users tend to give critical ratings on average are largely located in Europe. If we zoom in a little closer to Central Europe, we can see that countries such as Germany, Denmark and the Czech Republic, where beer culture has always been very pronounced, tend to give more critical ratings on average.</p>
     <p>Interestingly, this contrasts with the average scores of southern European countries traditionally associated with wine, such as Italy, Greece, Spain and, to a certain extent, France. Here we see very good average scores. This could potentially be linked back to the analysis of experienced and inexperienced beer drinkers, where we have already established that greater exposure to beer tends to lead to lower average scores rather than better ones.</p>
+    <h3>2.1.2 Beer patriotism</h3>
     <p>Although this basic analysis has already produced interesting results, it is worth going into more depth, especially on the subject of patriotism: “Do users from countries with a strong sense of national pride rate beer from their own country better than beer from abroad? Are there certain beer-loving countries that give themselves particularly high marks? Or are there countries that find beer from certain other countries particularly bad?</p>
     <p>To answer these questions, we divide the ratings into two groups: those about <em>domestic</em> beer and those about <em>foreign</em> beer. A rating belongs to the former group if the country of the brewery of the beer matches that of the user. In a first analysis, we first look at the proportions of domestic beer and foreign beer in the data set, both in general and grouped by country.</p>
     <img src="src/plots/imgs/horizontal_stacked_domestic_foreign.png" alt="A horizontal stacked bar plot showing the proportions that domestic and foreign beer ratings make up in the dataset">
@@ -58,6 +60,8 @@ title: Home
     <p>Last but not least, we wanted to know the user-country-brewery-country pair that gives the best and the worst average ratings. We set a threshold requiring at least 1,000 reviews for each combination; otherwise, it’s considered non-representative. Click on the graphics to see, which countries love/hate which others beers.</p>
     <iframe src="src/plots/us_el_salvador_animation.html" height="120" width="700" style="border:none;"></iframe>
     <iframe src="src/plots/hungary_us_animation.html" height="120" width="700" style="border:none;"></iframe>
+    <h3>Beer patriotism in the USA</h3>
+
 
     <iframe src="src/plots/US_map.html" height="600" width="700"></iframe>
     <iframe src="src/plots/world_avg_map2.html" height="600" width="700"></iframe>
