@@ -48,12 +48,13 @@ title: Home
     <p>To answer these questions, we divide the ratings into two groups: those about domestic beer and those about foreign beer. A rating belongs to the former group if the country of the brewery of the beer matches that of the user. In a first analysis, we first look at the proportions of domestic beer and foreign beer in the data set, both in general and grouped by country.</p>
     <img src="src/plots/imgs/horizontal_stacked_domestic_foreign.png" alt="A horizontal stacked bar plot showing the proportions that domestic and foreign beer ratings make up in the dataset">
     <img src="src/plots/imgs/proportion_foreign_domestic_stacked_bar_chart.png" alt="As stacked bar plot showing the proportions that domestic and foreign beer ratings make up in the dataset but for every country individually">
-    <iframe src="src/plots/US_map.html" height="600" width="700"></iframe>
-    <iframe src="src/plots/world_avg_map2.html" height="600" width="700"></iframe>
     <p>We find that the distribution of ratings between foreign and domestic beers is fairly balanced (roughly 46%-54%). This is generally quite good because it allows us to make statements about both groups based on a substantial amount of data.</p>
     <p>However, we also see that this is also due to the fact that we treat the USA as one country while we treat all European countries (which would only form a similarly large economic area as the USA if they were together) individually. This is because foreign beer dominates the ratings in almost all countries. In a few European countries with a pronounced beer culture, such as Germany, Poland, Belgium and England, it is around 50/50. The big outlier here, however, is the USA, where around 80% of the ratings are for domestic beer. As already mentioned, one of the reasons for this is that we also consider beer to be domestic if it comes from a different US state than the user rating it. We will therefore later devote ourselves to an in-depth analysis of the USA in order to further examine this substantial part of our data.</p>
     <p>Now, however, we don’t just want to look at the number of ratings but rather focus on the bias in the ratings themselves. In the following plot, we see the differences between the average rating for domestic beers and foreign beers by users from the country shown on the x-axis.</p>
     <img src="src/plots/imgs/difference_foreign_domestic_barchart.png" alt="A bar chart showing the differences between the average rating for domestic and the average rating fpr foreign beer for each country">
+
+    <iframe src="src/plots/US_map.html" height="600" width="700"></iframe>
+    <iframe src="src/plots/world_avg_map2.html" height="600" width="700"></iframe>
 
     <h2>2.2 Analyzing the influence of the user-brewery distance</h2>
 
