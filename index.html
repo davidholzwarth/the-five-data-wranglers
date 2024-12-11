@@ -175,21 +175,22 @@ title: Home
         <img id="main-image" src="src/plots/imgs/flowchart.png" alt="Flowchart of the feature extraction" />
 
         <!-- Hotspot 1 -->
-        <div class="hotspot" style="top: 30px; left: 600px; width: 220px; height: 500px;"
+        <div class="hotspot" style="top: 25px; left: 420px; width: 150px; height: 480px;"
              onclick="showDetails('src/plots/imgs/nn_details.jpg',
-                `<p>Here are the detailed insights about the selected section:</p>`,
-                ' ')">
+                `<p>In the following image we present the inner workings of the neural net in more detail</p>`,
+                'You can see that...')">
         </div>
 
         <!-- Hotspot 2 -->
-        <div class="hotspot hotspot-1" style="top: 150px; left: 500px; width: 200px; height: 200px;"
+        <div class="hotspot hotspot-1" style="top: 150px; left: 300px; width: 200px; height: 200px;"
              onclick="showDetails('',
-                `<p>Placeholder text for this area.</p>`,
+                `<p>Here, we compute the inner product of the word distributions for the keywords we defined, derived from negative reviews about this beer and negative reviews by this user. The inner product will be larger the more similar these distributions are. Thus, if a specific keyword appears frequently in negative reviews about the beer we want to predict and also frequently in the negative reviews of the user for whom we are predicting, it will contribute to the inner product. </p>
+                 <p> The idea behind this is that if a user particularly dislikes <em>acidic</em> beers, they will often use the word <em>acidic</em> in their negative ratings. Similarly, if a beer is especially acidic, other users who rate this beer negatively will likely also use the word frequently. In this way, we aim to determine how well the beer matches the user's personal aversions.</p>`,
                 ' ')">
         </div>
 
         <!-- Hotspot 3 -->
-        <div class="hotspot hotspot-2" style="top: 340px; left: 50px; width: 70px; height: 40px;"
+        <div class="hotspot hotspot-2" style="top: 380px; left: 40px; width: 80px; height: 55px;"
              onclick="showDetails('',
                 `<p>
                   The <strong>User Stats</strong> represent a significant part of the features and include much of the bias-related information about the user that we identified in the previous sections. It includes:
