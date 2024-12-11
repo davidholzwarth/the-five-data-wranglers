@@ -26,7 +26,7 @@ title: Home
             background-color: rgba(255, 0, 0, 0.5);
         }
         .hotspot-1:hover {
-            background-color: rgba(0, 255, 0, 0.5);
+            background-color: rgba(255, 255, 0, 0.5);
         }
         .hotspot-2:hover {
             background-color: rgba(0, 0, 255, 0.5);
@@ -174,22 +174,30 @@ title: Home
     <div class="image-container">
         <img id="main-image" src="src/plots/imgs/flowchart.png" alt="Flowchart of the feature extraction" />
 
-        <!-- Hotspot 1 -->
-        <div class="hotspot" style="top: 25px; left: 420px; width: 150px; height: 480px;"
+        <!-- The big neural Network node -->
+        <div class="hotspot" style="top: 23px; left: 420px; width: 150px; height: 480px;"
              onclick="showDetails('src/plots/imgs/nn_details.jpg',
                 `<p>In the following image we present the inner workings of the neural net in more detail</p>`,
                 'You can see that...')">
         </div>
 
-        <!-- Hotspot 2 -->
+        <!-- Inner product good node -->
         <div class="hotspot hotspot-1" style="top: 150px; left: 300px; width: 200px; height: 200px;"
+             onclick="showDetails('',
+                `<p>Here, we compute the inner product of the word distributions for the keywords we defined, derived from positive reviews about this beer and positive reviews by this user. The inner product will be larger the more similar these distributions are. Thus, if a specific keyword appears frequently in positive reviews about the beer we want to predict and also frequently in the positive reviews of the user for whom we are predicting, it will contribute to the inner product. </p>
+                 <p>The idea behind this is that if a user particularly enjoys malty beers, they will often use the word <em>malty</em> in their positive ratings. Similarly, if a beer is especially malty, other users who rate this beer positively will likely also use the word frequently. In this way, we aim to determine how well the beer matches the user's personal preferences.</p>`,
+                ' ')">
+        </div>
+
+        <!-- Inner product bad node -->
+        <div class="hotspot hotspot-1" style="top: 0px; left: 0px; width: 200px; height: 200px;"
              onclick="showDetails('',
                 `<p>Here, we compute the inner product of the word distributions for the keywords we defined, derived from negative reviews about this beer and negative reviews by this user. The inner product will be larger the more similar these distributions are. Thus, if a specific keyword appears frequently in negative reviews about the beer we want to predict and also frequently in the negative reviews of the user for whom we are predicting, it will contribute to the inner product. </p>
                  <p> The idea behind this is that if a user particularly dislikes <em>acidic</em> beers, they will often use the word <em>acidic</em> in their negative ratings. Similarly, if a beer is especially acidic, other users who rate this beer negatively will likely also use the word frequently. In this way, we aim to determine how well the beer matches the user's personal aversions.</p>`,
                 ' ')">
         </div>
 
-        <!-- Hotspot 3 -->
+        <!-- Hotspot 4: User stats node -->
         <div class="hotspot hotspot-2" style="top: 380px; left: 40px; width: 80px; height: 55px;"
              onclick="showDetails('',
                 `<p>
