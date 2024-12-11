@@ -21,12 +21,6 @@ title: Home
         .hotspot {
             position: absolute;
             cursor: pointer;
-            /* These values define the clickable spaces */
-            top: 45px; /* This is relative to the upper left corner  */
-            left: 760px; /* This is relative to the upper left corner  */
-            width: 260px;
-            height: 910px;
-            background-color: rgba(255, 0, 0, 0.0); /* For testing, change later */
         }
         .hotspot:hover {
             background-color: rgba(255, 0, 0, 0.5); /* Hovering over it changes the color so the user knows its clickable */
@@ -172,7 +166,9 @@ title: Home
     <h1>4 Taking bias into account</h1>
     <div class="image-container">
         <img id="main-image" src="src/plots/imgs/flowchart.png" alt="Flowchart of the feature extraction" />
-        <div class="hotspot" onclick="showDetails()"></div>
+        <div class="hotspot" style="top: 45px; left: 760px; width: 260px; height: 910px;" onclick="showDetails('src/plots/imgs/nn_details.jpg', 'Here are the detailed insights about the selected section:')"></div>
+        <div class="hotspot" style="top: 150px; left: 500px; width: 200px; height: 200px;" onclick="showDetails('', 'Placeholder text for this area.')"></div>
+        <div class="hotspot" style="top: 300px; left: 300px; width: 150px; height: 150px;" onclick="showDetails('', 'Another placeholder text for a different area.')"></div>
     </div>
     <div class="info-box" id="info-box">
         <p id="info-text">Click on the boxes to learn more!</p>
@@ -180,14 +176,20 @@ title: Home
     </div>
 
     <script>
-        function showDetails() {
-            // Update the info box content
+        function showDetails(imageSrc, description) {
             const infoText = document.getElementById('info-text');
             const detailImage = document.getElementById('detail-image');
 
-            infoText.textContent = "Here are the detailed insights about the selected section:";
-            detailImage.src = 'src/plots/imgs/nn_details.jpg';
-            detailImage.style.display = 'block'; // Make the image visible
+            // Update the text
+            infoText.textContent = description;
+
+            // Update the image if provided
+            if (imageSrc) {
+                detailImage.src = imageSrc;
+                detailImage.style.display = 'block';
+            } else {
+                detailImage.style.display = 'none';
+            }
         }
     </script>
 </body>
