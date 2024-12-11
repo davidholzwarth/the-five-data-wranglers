@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image</title>
+    <style>
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .hotspot {
+            position: absolute;
+            cursor: pointer;
+            /* These values define the clickable spaces */
+            top: 45px; /* This is relative to the upper left corner  */
+            left: 760px; /* This is relative to the upper left corner  */
+            width: 260px;
+            height: 910px;
+            background-color: rgba(255, 0, 0, 0.0); /* For testing, change later */
+        }
+        .hotspot:hover {
+            background-color: rgba(255, 0, 0, 0.5); /* Hovering over it changes the color so the user knows its clickable */
+        }
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .info-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img id="main-image" src="imgs/flowchart.png" alt="Flowchart of the feature extraction" />
+        <div class="hotspot" onclick="showDetails()"></div>
+    </div>
+    <div class="info-box" id="info-box">
+        <p id="info-text">Click on the boxes to learn more!</p>
+        <img id="detail-image" src="" alt="" style="display: none;" />
+    </div>
+
+    <script>
+        function showDetails() {
+            // Update the info box content
+            const infoText = document.getElementById('info-text');
+            const detailImage = document.getElementById('detail-image');
+
+            infoText.textContent = "Here are the detailed insights about the selected section:";
+            detailImage.src = 'imgs/nn_details.jpg';
+            detailImage.style.display = 'block'; // Make the image visible
+        }
+    </script>
+</body>
+</html>
