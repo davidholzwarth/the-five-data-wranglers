@@ -4,6 +4,7 @@ import datetime
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
+from plotly.subplots import make_subplots
 
 # Define rating buckets for readability
 rating_buckets = np.arange(0, 5.5, 0.5)
@@ -14,11 +15,7 @@ def rating_evolution_over_time(
     bucket=rating_buckets,
     min_ratings=1000,
 ):
-
-    # changes unix timestamp to date
-    df["datetime"] = df["date"].apply(datetime.datetime.fromtimestamp)
-    df["year"] = df["datetime"].dt.strftime("%Y")
-
+    
     # Clean and process the DataFrame
     df_cleaned = df.dropna(subset=["rating"])
     df_cleaned["rating"] = df_cleaned["rating"].astype(float)
@@ -34,48 +31,40 @@ def rating_evolution_over_time(
     # Filter for years with more than `min_ratings` ratings
     filtered_years = ratings_count[ratings_count > min_ratings].index
     df_filtered = df_cleaned[df_cleaned["year"].isin(filtered_years)]
+    
+    # Count the occurrences of each combination of year and rating_buckets
+    counts = df_filtered.groupby(["year", "rating_buckets"], observed=False).size().reset_index(name="count")
 
-    # Calculate distribution of ratings per filtered year
-    grouped = df_filtered.groupby(["year", "rating_buckets"], observed=False).size()
-    percentage_df = (
-        grouped.groupby(level=0).apply(lambda x: x / x.sum()).unstack(fill_value=0)
-    )
+    # Calculate percentages directly
+    counts["percentage"] = counts.groupby("year")["count"].transform(lambda x: x / x.sum())
 
-    # Recalculate the ratings count for filtered years
-    ratings_count_filtered = ratings_count[ratings_count > min_ratings]
-
-    # Plot the stacked bar chart with the secondary y-axis
-    fig, ax1 = plt.subplots(figsize=(12, 6))
-
-    # Primary y-axis for stacked bar chart (distribution of ratings)
-    percentage_df.plot(kind="bar", stacked=True, ax=ax1, width=0.8)
-    ax1.set_xlabel("Year")
-    ax1.set_ylabel("Relative distribution of ratings")
-    ax1.set_title(f"Distribution of ratings for " + df_name)
-    ax1.legend(title="Rating Interval", bbox_to_anchor=(1.1, 1), loc="upper left")
-
-    # Secondary y-axis for the count of ratings
-    ax2 = ax1.twinx()  # Creates a secondary y-axis
-    ratings_count_filtered.plot(
-        kind="line",
-        ax=ax2,
-        color="black",
-        marker="o",
-        linewidth=2,
-        label="Total Ratings",
-    )
-    ax2.set_ylabel("Total number of ratings")
-    ax2.legend(loc="upper right")
-
-    # Customize x-axis
-    ax1.set_xticks(range(len(ratings_count_filtered.index)))
-    ax1.set_xticklabels(ratings_count_filtered.index, rotation=45)
-
+    # Reshape the DataFrame to have rating_buckets as columns
+    percentage_df = counts.pivot_table(
+        index="year",
+        columns="rating_buckets",
+        values="percentage",
+        fill_value=0,
+        observed=False
+    ).reset_index()
+    
+    # Clean up column names
+    percentage_df.columns.name = None  # Remove the pivot table's column name
     name = df_name.split(" ")
-    plt.savefig(f"src/plots/rating_evolution_over_time_{name[0]}_{name[1]}.png")
+    
+    melted_df = percentage_df.melt(id_vars="year", var_name="rating_bucket", value_name="percentage")
+    fig = px.bar(
+        melted_df,
+        x="year",
+        y="percentage",
+        color="rating_bucket",
+        title=f"Rating Distribution over Time for {name[0]} {name[1]}",
+        labels={"percentage": "Percentage", "year": "Year", "rating_bucket": "Rating Bucket"},
+    )
+
+    fig.update_layout(barmode="stack", bargap=0)
+    fig.write_html(f"src/plots/rating_evolution_over_time_{name[0]}_{name[1]}.html", include_plotlyjs="cdn")
 
 
-# Function for filtering and diplaying the change in reviewers rating over time
 def rating_evolution_with_rating_number(
     df,
     df_name,
@@ -86,18 +75,19 @@ def rating_evolution_with_rating_number(
     df_cleaned = df.dropna(subset=["rating"])[1:]
     df_cleaned["rating"] = df_cleaned["rating"].astype(
         float
-    )  # tranforms all ratings to int
-    df_cleaned[["user_id", "rating", "date"]].drop_duplicates()
+    )
 
     # Sorts the DataFrame by user and date to ensure correct order of ratings and adds column for rating number for respective user
     df_sorted = df_cleaned.sort_values(by=["user_id", "date"])
     df_sorted["rating_order"] = df_sorted.groupby("user_id").cumcount() + 1
 
     # Uses a cutoff for amount of ratings, applies buckets to dataframe and calculates distribution
-    df_filtered = df_sorted[df_sorted["rating_order"] <= nr_reviews].copy()
-    df_filtered["rating_buckets"] = pd.cut(
+    df_filtered = df_sorted[df_sorted["rating_order"] <= nr_reviews]
+
+    df_filtered["rating_buckets"]= pd.cut(
         df_filtered["rating"], bins=bucket, right=False, include_lowest=True
-    )
+    ).copy()
+    
     df_amount = (
         df_filtered.groupby(["rating_order", "rating_buckets"], observed=False)
         .size()
@@ -108,41 +98,27 @@ def rating_evolution_with_rating_number(
     )
 
     # Pivots the data for stacked bar plot
-    pivot_df = df_amount.pivot(
-        index="rating_order", columns="rating_buckets", values="percentage"
-    ).fillna(0)
-
-    # Create the plot with two y-axes
-    fig, ax1 = plt.subplots(figsize=(12, 6))
-
-    # First plot (stacked bar plot for relative distribution)
-    pivot_df.plot(kind="bar", stacked=True, ax=ax1)
-    ax1.set_xlabel("Rating number")
-    ax1.set_ylabel("Relative distribution of ratings")
-    ax1.set_title("Relative Distribution of ratings by Rating number for " + df_name)
-    ax1.set_xticks(np.arange(0, nr_reviews, 10), np.arange(0, nr_reviews, 10))
-    custom_legend_labels = [
-        f"{bucket[i]} - {bucket[i+1]}" for i in range(len(bucket) - 1)
-    ]
-    ax1.legend(
-        title="Rating interval",
-        labels=custom_legend_labels,
-        bbox_to_anchor=(1.1, 1),
-        loc="upper left",
-    )
-
-    ax2 = ax1.twinx()
-    # Aggregate the total number of responses for each rating order
-    response_count = df_sorted.groupby("rating_order")["user_id"].count()
-    ax2.plot(
-        np.arange(0, len(response_count), 1),
-        response_count.values,
-        color="black",
-        linestyle="-",
-        label="Number of Responses",
-    )
-    ax2.set_ylabel("Number of ratings")
-    ax2.legend(loc="upper right")
+    pivot_df = df_amount.pivot_table(
+        index="rating_order", 
+        columns="rating_buckets", 
+        values="percentage", 
+        fill_value=0,
+        observed=False
+    ).reset_index()
     
-    name = df_name.split(" ")
-    plt.savefig(f"src/plots/rating_evolution_given_amount_of_ratings_{name[0]}_{name[1]}.png")
+    # Clean up column names
+    pivot_df.columns.name = None 
+    
+    name = df_name.split(" ") 
+    
+    melted_df = pivot_df.melt(id_vars="rating_order", var_name="rating_bucket", value_name="percentage")
+    fig = px.bar(
+        melted_df,
+        x="rating_order",
+        y="percentage",
+        color="rating_bucket",
+        title=f"Relative Distribution of Ratings Given Rating Number for {name[0]} {name[1]}",
+        labels={"percentage": "Percentage", "rating_order": "Rating Number", "rating_bucket": "Rating Bucket"},
+    )
+    fig.update_layout(barmode="stack", bargap=0)
+    fig.write_html(f"src/plots/rating_evolution_given_amount_of_ratings_{name[0]}_{name[1]}.html", include_plotlyjs="cdn")
