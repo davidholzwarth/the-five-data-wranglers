@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bier Bewertung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .arrow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .arrow .flag {
+            width: 120px;
+            height: auto;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        #flag-right {
+            margin-left: 20px; /* Verschiebt die rechte Flagge etwas weiter nach rechts */
+        }
+
+        .arrow .arrow-line {
+            width: 200px;
+            height: 4px;
+            background-color: black;
+            position: relative;
+        }
+
+        .arrow .arrow-head {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid black;
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            transform: translateY(-50%);
+        }
+
+        .arrow .icon {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="arrow" id="interactive-arrow">
+            <img src="https://flagcdn.com/w320/us.png" alt="USA Flag" class="flag hidden" id="flag-left">
+            <div class="arrow-line">
+                <span class="icon" id="icon">☠️</span>
+                <div class="arrow-head"></div>
+            </div>
+            <img src="https://flagcdn.com/w320/sv.png" alt="El Salvador Flag" class="flag hidden" id="flag-right">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('interactive-arrow').addEventListener('click', function() {
+            const leftFlag = document.getElementById('flag-left');
+            const rightFlag = document.getElementById('flag-right');
+            const icon = document.getElementById('icon');
+
+            // Show the flags
+            leftFlag.classList.remove('hidden');
+            leftFlag.classList.add('visible');
+
+            rightFlag.classList.remove('hidden');
+            rightFlag.classList.add('visible');
+
+            // Replace skull with the rating
+            icon.textContent = "1.81";
+        });
+    </script>
+</body>
+</html>
