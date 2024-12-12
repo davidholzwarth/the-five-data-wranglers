@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Difference Highlight</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+
+        .number-container {
+            text-align: center;
+            transition: transform 0.3s ease, font-size 0.3s ease;
+        }
+
+        .number {
+            font-size: 4rem;
+            color: #333;
+            margin: 0;
+            transition: font-size 0.3s ease;
+        }
+
+        .label {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .number-container:hover {
+            transform: scale(1.1);
+        }
+
+        .number-container:hover .number {
+            font-size: 5rem;
+        }
+
+        .connector {
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #aaa;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        .connector::before, .connector::after {
+            content: "";
+            position: absolute;
+            top: -0.4rem;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .connector::before {
+            left: 0;
+            border-width: 0.5rem 0.5rem 0 0;
+            border-color: #aaa transparent transparent transparent;
+        }
+
+        .connector::after {
+            right: 0;
+            border-width: 0.5rem 0 0 0.5rem;
+            border-color: transparent transparent transparent #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="number-container">
+            <p class="number">65%</p>
+            <p class="label">Left Value</p>
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="number-container">
+            <p class="number">10%</p>
+            <p class="label">Difference</p>
+        </div>
+
+        <div class="number-container">
+            <p class="number">75%</p>
+            <p class="label">Right Value</p>
+        </div>
+    </div>
+</body>
+</html>
