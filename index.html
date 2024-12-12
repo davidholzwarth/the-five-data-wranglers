@@ -111,6 +111,17 @@ title: Home
     <p>The following plot illustrates the distribution of user ratings for beers from breweries at various distances. On the x-axis, you can see the distance categories of the breweries from which the corresponding bar is calculated. The different colored segments in the stacked bars indicate the frequency of each rating for breweries at a given distance from the user. However, it is evident that some bars are more meaningful than others due to being based on more data. Therefore, we have also included a line indicating the number of ratings for each user-brewery distance. We show the plot for both datasets on which our analysis was based, in order to be able to see whether there are any major differences.</p>
     <img src="src/plots/imgs/distance_beer_advocate.png" alt="Plot showing the change in the rating distribution for different user-brewery distances for the BeerAdvocate dataset">
     <img src="src/plots/imgs/distance_rate_beer.png" alt="Plot showing the change in the rating distribution for different user-brewery distances for the RateBeer dataset">
+    <p>
+        We can indeed identify some trends. For example, we observe a peak of better ratings at a distance of approximately 4250 km to 4750 km. However, the line plot also shows a drastic decline in ratings, which can likely be explained by the distance between the USA and Europe. At this range, the Atlantic Ocean separates the two continents.
+    </p>
+    <p>
+        Beyond approximately 9000 km, the number of ratings also drops significantly, quickly falling below 1000 ratings per distance category. It is challenging to make qualified statements here, as the data is very noisy. However, if we focus on the range up to 9000 km and exclude the area around 4250 km to 4750 km, a few subtle trends can be identified.
+    </p>
+    <p>
+        Specifically, the distribution within the first 2000 km is slightly shifted upward compared to further distances. This suggests that within a radius of about 2000 km, there might indeed be a more homogeneous beer culture and a beer taste more similar to that of the user.
+    </p>
+
+
     <h1>3 Influence of the season</h1>
     <h2>3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p>
