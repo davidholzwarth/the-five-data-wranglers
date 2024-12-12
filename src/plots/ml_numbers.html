@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Ratings Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Ermöglicht Anzeige von zusätzlichem Text unter allem */
+        }
+
+        .container {
+            display: flex;
+            transform: rotate(-5deg);
+        }
+
+        .number-container-1 { /* the positions for the following two containers for the numbers are relative to the original position of the arrow */
+            position: relative;
+            transform: rotate(5deg);
+            top: 100px;
+            left: -15px;
+        }
+
+        .number-container-2 {
+            position: relative;
+            transform: rotate(-2deg);
+            top: 0px;
+            right: -30px;
+        }
+
+        .number {
+            font-size: 5rem;
+            color: #333;
+            margin: 0;
+            transition: font-size 0.3s ease;
+        }
+
+        .label {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .number-container:hover {
+            transform: scale(1.1) rotate(0deg);
+        }
+
+        .number-container:hover .number {
+            font-size: 6rem;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Aktiviert relative Positionierung */
+        }
+
+        .image-container img {
+            max-width: 300px;
+            transform: rotate(2deg);
+        }
+
+        .hover-text {
+            font-size: 2rem;
+            color: #28a745;
+            position: absolute;
+            bottom: -50px; /* Unterhalb der Pfeilgrafik */
+            visibility: hidden; /* Element unsichtbar machen, aber im Layout behalten */
+            opacity: 0; /* Vollständig transparent */
+            transform: scale(0.8);
+            text-align: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .image-container:hover .hover-text {
+            visibility: visible; /* Sichtbar machen */
+            opacity: 1; /* Vollständig sichtbar */
+            transform: scale(1); /* Leichte Animation beim Erscheinen */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="number-container number-container-1">
+            <p class="number">65%</p>
+            <p class="label">Prediction accuracy<br>without bias features</p>
+        </div>
+        <div class="image-container">
+            <img src="imgs/arrow.png" alt="Arrow">
+            <div class="hover-text">+10%🥳</div>
+        </div>
+        <div class="number-container number-container-2">
+            <p class="number">75%</p>
+            <p class="label">Prediction accuracy<br>without bias features</p>
+        </div>
+    </div>
+</body>
+</html>
