@@ -172,6 +172,28 @@ title: Home
     <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
 
     <h1>4 Taking bias into account</h1>
+    <p>
+        Let us now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers, but some might still wonder,
+        <q>What's the point of all this? Who benefits from knowing whether a beer reviewer is biased in their decision?</q>
+    </p>
+    <p>
+        As already mentioned in the introduction, this knowledge can, of course, be useful to individual users trying to determine which beers they might enjoy and which reviews they can trust.
+        More importantly, however, this knowledge is particularly valuable for large corporations and a significant industry—the advertising industry.
+    </p>
+    <p>
+        If one can accurately assess a user's bias, this information can be incorporated into decisions about which beer to advertise to them and which not to.
+        It is undeniable that bias plays a significant role in purchasing decisions
+        (consider, for example, the stigmas associated with products from certain countries, and so on).
+    </p>
+    <p>
+        In the following section, we have compiled everything we have learned so far and attempted to build a kind of recommender system.
+        This system is a neural network designed to predict, based on various features about the user and the beer—including bias features—whether a user would rate a beer higher or lower than their current average rating.
+        This prediction could then guide decisions on whether to advertise a particular beer to the user—or not.
+    </p>
+    <p>
+        We trained the network on 230,000 ratings from the BeerAdvocate dataset, and it achieved the following results on a test dataset:
+    </p>
+
     <div class="image-container">
         <img id="main-image" src="src/plots/imgs/flowchart.png" alt="Flowchart of the feature extraction" />
 
