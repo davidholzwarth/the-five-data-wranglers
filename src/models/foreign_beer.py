@@ -875,8 +875,8 @@ def plot_avg_ratings_map(avg_ratings_per_location, large_map=True, save=True):
     # giving the map more space in the iframe
     if large_map:
         fig.update_layout(
-            width=1200,  # Increase width of the plot
-            height=800,  # Increase height of the plot
+            width=550,  # increase width of the map in the iframe
+            height=700,  # increase height of the map in the iframe
             title=dict(
                 x=0.5,  # Center the title
                 font=dict(size=20)  # Adjust title font size
