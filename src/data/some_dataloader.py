@@ -11,8 +11,8 @@ def load_rating_wo_text(path):
 
 
 def load_user_data(
-    ba_path="data/BeerAdvocate/users.csv",
-    rb_path="data/RateBeer/users.csv",
+    ba_path="src/data/BeerAdvocate/users.csv",
+    rb_path="src/data/RateBeer/users.csv",
 ):
     """
     Loads the users.csv for both datasets
@@ -40,8 +40,8 @@ def load_brewery_data(brewery_path="./data/RateBeer/breweries.csv"):
 
 
 def load_rating_data(
-    ba_path="data/BeerAdvocate/BA_ratings.csv",
-    rb_path="data/RateBeer/RB_ratings.csv",
+    ba_path="src/data/BeerAdvocate/BA_ratings.csv",
+    rb_path="src/data/RateBeer/RB_ratings.csv",
 ):
     """
     Loads rating data in pandas dataframes

@@ -830,11 +830,12 @@ def filter_usa_duplicates(df_rb, df_ba, cols):
     return result
 
 
-def plot_avg_ratings_map(avg_ratings_per_location, save=True):
+def plot_avg_ratings_map(avg_ratings_per_location, large_map=True, save=True):
     """
     Plots an interactive map of the USA showing the difference in average ratings by state.
     The color intensity reflects the difference value, and hovering over a state displays its name and value.
 
+    :param large_map: whether we want to give the map more space in the iframe as default
     :param save: whether we want to save or show the graphic
     :param avg_ratings_per_location: DataFrame containing states and the difference in ratings.
     :return: Nothing (plots an interactive map).
@@ -844,7 +845,7 @@ def plot_avg_ratings_map(avg_ratings_per_location, save=True):
 
     print(avg_ratings_per_location.head())
 
-    # Ensure the column names are meaningful for the map
+    # ensure the column names are meaningful for the map
     avg_ratings_per_location.rename(
         columns={"user_location": "State", "Difference": "Rating Difference"},
         inplace=True,
@@ -859,20 +860,44 @@ def plot_avg_ratings_map(avg_ratings_per_location, save=True):
     # Use Plotly Express to create the map
     fig = px.choropleth(
         avg_ratings_per_location,
-        locations="State",  # State names in the data
-        locationmode="USA-states",  # Match state names to the USA map
-        color="Rating Difference",  # Value to represent via color
-        color_continuous_scale="Viridis",  # Color scale
-        scope="usa",  # Restrict to USA
+        locations="State",  # state names in the data
+        locationmode="USA-states",  # match state names to the USA map
+        color="Rating Difference",  # value to represent via color
+        color_continuous_scale="Viridis",  # color scale
+        scope="usa",  # restrict to USA
         title="Difference in Average Ratings by State (US Beer vs Non-US Beer)",
-        labels={"Rating Difference": "Diff (US - Non-US)"},  # Label for hover tooltip
+        labels={"Rating Difference": "Diff (US - Non-US)"},  # label for hover tooltip
     )
 
-    # Customize hover data
+    # customize hover data
     fig.update_traces(hovertemplate="<b>%{location}</b><br>Difference: %{z:.2f}")
+
+    # giving the map more space in the iframe
+    if large_map:
+        fig.update_layout(
+            width=550,  # increase width of the map in the iframe
+            height=700,  # increase height of the map in the iframe
+            title=dict(
+                # x=0.5,  # Center the title
+                font=dict(size=18)  # Adjust title font size
+            ),
+            margin={"r": 0, "t": 0, "l": 0, "b": 0},  # Reduce margins around the plot
+            coloraxis_colorbar=dict(
+                title="Difference",
+                thicknessmode="pixels",  # Adjust thickness of colorbar
+                thickness=15,  # Set thickness in pixels
+                lenmode="fraction",  # Adjust length of colorbar
+                len=0.5,  # Set the length relative to the figure
+                # xanchor="right",  # Align the colorbar to the right
+                # x=0.9  # Set its horizontal position
+            )
+        )
 
     # Show the plot
     if save:
+        if large_map:
+            fig.write_html("src/plots/US_map2.html")  # different file name, so I am able to compare...
+            return
         fig.write_html("src/plots/US_map.html")
     else:
         fig.show()

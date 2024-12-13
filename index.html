@@ -98,6 +98,7 @@ title: Home
     <p>This is an interesting initial finding. In a previous analysis, we already found that U.S. citizens rate their own beer on average more than 0.1 points higher than foreign beer (though this analysis was only for the RateBeer dataset). Now, with both datasets combined, we can see precise figures, and the difference is even more pronounced at around 0.18 points. 'Beer patriotism' in the U.S. thus appears to be quite strong. Let’s take a closer look at this, broken down by individual U.S. states.</p>
     <iframe src="src/plots/US_map.html" height="600" width="700"></iframe>
     <iframe src="src/plots/US_map2.html" height="600" width="700"></iframe>
+    <iframe src="src/plots/US_map_test.html" height="600" width="700"></iframe>
     <p>This finding becomes even stronger here. There isn’t a single U.S. state that rates foreign beer higher than its own (although the difference in Louisiana is negligible). I find this quite impressive. There actually seems to be a kind of bias in the U.S. against non-American beer. This should definitely be taken into account when assessing beer ratings from the US.</p>
     <p>We also wondered: in the U.S., there is a politically diverse landscape. The Southern states are generally considered more patriotic and are core states for the Republicans, the more conservative of the two major U.S. parties. So, might there be a difference in how citizens of Northern states and citizens of Southern states rate beer?</p>
     <img src="src/plots/imgs/north_soth_updated.png" alt="Mean rating towards foreign/domestic beer for northern/southern/other US-states">
@@ -112,6 +113,7 @@ title: Home
     <p>The following plot illustrates the distribution of user ratings for beers from breweries at various distances. On the x-axis, you can see the distance categories of the breweries from which the corresponding bar is calculated. The different colored segments in the stacked bars indicate the frequency of each rating for breweries at a given distance from the user. However, it is evident that some bars are more meaningful than others due to being based on more data. Therefore, we have also included a line indicating the number of ratings for each user-brewery distance. We show the plot for both datasets on which our analysis was based, in order to be able to see whether there are any major differences.</p>
     <img src="src/plots/imgs/distance_beer_advocate.png" alt="Plot showing the change in the rating distribution for different user-brewery distances for the BeerAdvocate dataset">
     <img src="src/plots/imgs/distance_rate_beer.png" alt="Plot showing the change in the rating distribution for different user-brewery distances for the RateBeer dataset">
+
     <p>
         We can indeed identify some trends. For example, we observe a peak of better ratings at a distance of approximately 4250 km to 4750 km. However, the line plot also shows a drastic decline in ratings, which can likely be explained by the distance between the USA and Europe. At this range, the Atlantic Ocean separates the two continents.
     </p>
