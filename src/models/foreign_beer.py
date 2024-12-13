@@ -878,18 +878,18 @@ def plot_avg_ratings_map(avg_ratings_per_location, large_map=True, save=True):
             width=550,  # increase width of the map in the iframe
             height=700,  # increase height of the map in the iframe
             title=dict(
-                x=0.5,  # Center the title
-                font=dict(size=20)  # Adjust title font size
+                #x=0.5,  # Center the title
+                font=dict(size=18)  # Adjust title font size
             ),
-            margin={"r": 0, "t": 50, "l": 0, "b": 0},  # Reduce margins around the plot
+            margin={"r": 0, "t": 0, "l": 0, "b": 0},  # Reduce margins around the plot
             coloraxis_colorbar=dict(
                 title="Difference",
                 thicknessmode="pixels",  # Adjust thickness of colorbar
                 thickness=15,  # Set thickness in pixels
                 lenmode="fraction",  # Adjust length of colorbar
                 len=0.5,  # Set the length relative to the figure
-                xanchor="right",  # Align the colorbar to the right
-                x=0.9  # Set its horizontal position
+                #xanchor="right",  # Align the colorbar to the right
+                #x=0.9  # Set its horizontal position
             )
         )
 
