@@ -69,7 +69,7 @@ def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_th
     return beer_style_ranking_by_amount
     
     
-def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
+def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 14):
     """
     Calculate the ranking of beer styles by the amount of reviews per month
     :param df: df_rb_ratings
@@ -77,7 +77,7 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_thre
     :param cutoff: the minimum amount of reviews per style. Default value 500
     :param interesting_threshhold: the minimum difference in max and min to be considered interesting. Default value 10
     """
-    beer_style_ranking_by_amount = filter_beer_style_ranking_by_amount(df, styles, interesting_threshhold)
+    beer_style_ranking_by_amount = filter_beer_style_ranking_by_amount(df, styles, cutoff, interesting_threshhold)
 
     fig = go.Figure()
 
@@ -107,7 +107,7 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_thre
     fig.write_html("src/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
     
 
-def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 10):
+def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 14):
     """
     Calculate the ranking of beer styles by the amount of reviews per month
     :param df: df_rb_ratings
