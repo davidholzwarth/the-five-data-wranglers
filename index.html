@@ -45,7 +45,7 @@ title: Home
 
 </head>
 <body>
-    <h1>1 Influence of the user's experience</h1>
+    <h1 id="section1">1 Influence of the user's experience</h1>
     <h2 id="section1-1">1.1 Analysis of experience based on amount of reviews</h2>
     <p>
         In this part of the analysis, we want to investigate how the ratings provided by a user change over time. This can be shown by plotting the rating number on the x-axis and the relative distribution of ratings on the y-axis. In this section we would also have a second axis showing the total amount of ratings provided at the given rating number.
@@ -84,8 +84,8 @@ title: Home
     <p>This plot provides perhaps the most interesting insight so far. We find that experienced users rate almost all beer styles <em>lower on average</em> than inexperienced drinkers, with the exceptions of "Witbier" and "American Adjunct Lager." This suggests that with greater experience, drinkers tend to have higher standards for their beers. Thus, when reading a review from an inexperienced versus an experienced beer drinker for the same beer, one should consider this potential bias in shaping expectations or assessments.</p>
     <p>We already observed this difference in average ratings at the beginning when we calculated the overall average rating across all beer styles. Now, however, we can see the breakdown by each individual beer style. This additional information can help us better account for rating bias when assessing a particular review.</p>
 
-    <h1>2 Influence of the location</h1>
-    <h2>2.1 Examining beer patriotism</h2>
+    <h1 id="section2">2 Influence of the location</h1>
+    <h2 id="section2-1">2.1 Examining beer patriotism</h2>
     <h3>2.1.1 Domestic and foreign beer</h3>
     <p>Another factor that can enter into the user's evaluation as a bias is the country from which he or the beer comes. It is hard to deny that the nationality and culture of the country of origin can have a major influence on the evaluation of any cultural asset - and beer is a foodstuff and therefore also a cultural asset. So it could be that ratings from users from more wine-oriented countries such as France and Italy are different to those from more beer-oriented countries such as the northern European states. So let's start with a simple analysis and look at the average rating of users from a particular country.</p>
     <iframe src="src/plots/bar_chart_avg_rating.html" height="600" width="720" style="border: none;"></iframe>
@@ -120,7 +120,7 @@ title: Home
     <p>There is a difference in the rating of American and non-American beers between the Northern and Southern states, with both differences being around 0.175. So we can't conclude that there is a tendency that the difference in the rating of foreign/domestic beers of users from southern states would be more extreme than of users from northern states. However, it is noticeable that both categories are rated lower in the Southern states than in the Northern states.</p>
     <p>We could already see this kind of result in the map plot about the US. What's visible there, interestingly, is that the beer-patriotism phenomenon seems to be especially common not in southern states, but in (south-)western US-states. So we have to conclude that, if one wants to take the patriotism-bias into account, he needs to differentiate between different US-states.</p>
 
-    <h2>2.2 Analyzing the influence of the user-brewery distance</h2>
+    <h2 id="section2-2">2.2 Analyzing the influence of the user-brewery distance</h2>
     <p>So far, we have only looked at countries in general or the distinction between foreign and domestic beers. However, it would also be interesting to conduct a more fine-grained analysis and ask whether the distance between the user’s home country and the brewery’s location has an impact on the rating. The assumption that geographically closer countries might share similar drinking cultures and, consequently, similar tastes in beer is not far-fetched.</p>
 
     <p>Could it be that beers from breweries located closer to the user’s location are rated more highly because the user’s taste is more accustomed to the local beer culture? Or could the exact opposite be true, with beer drinkers seeking exciting new flavors from distant places? We aim to investigate this to determine whether the user-brewery distance is a significant bias.</p>
@@ -140,8 +140,8 @@ title: Home
     </p>
 
 
-    <h1>3 Influence of the season</h1>
-    <h2>3.1 Influence of the season on average rating</h2>
+    <h1 id="section3">3 Influence of the season</h1>
+    <h2 id="section3-1">3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p>
 
     <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html" height="600" width="700"></iframe>
@@ -149,7 +149,7 @@ title: Home
 
     <p>We see that the average ratings do not change with the month, at least not significantly, thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the results are kind of boring. However, lets also have a look at how the beers get rated throughut the year depending on the beer style. </p>
 
-    <h2>3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
+    <h2 id="section3-2">3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
     <p>Before we analyse the rating, let's first check which beer is a "summery" beer and which beers are "wintery", by comparing the amount of each reviewed by month. The graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year, in order to not crowd the graph with straight and uninteresting lines. The value of 14 was chosen as it offers a nice balance between not hiding important data and now not crowding the graph. The function also removes beer styles which have less than 500 reviews for at least one month, in order to not flood the analysis with beers which have few reviews, where the change in review count might not be significant.</p>
 
     <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="600" width="700"></iframe>
@@ -177,7 +177,7 @@ title: Home
     </p>
     <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
 
-    <h1>4 Taking bias into account</h1>
+    <h1 id="section4">4 Taking bias into account</h1>
     <p>
         Let us now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers, but some might still wonder,
         <q>What's the point of all this? Who benefits from knowing whether a beer reviewer is biased in their decision?</q>
