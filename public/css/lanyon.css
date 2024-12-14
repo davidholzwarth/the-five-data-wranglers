@@ -605,3 +605,13 @@ a.pagination-item:hover {
 .submenu-items a:hover {
   background-color: #444;
 }
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding-left: 0; 
+}
+
+.sidebar-nav li {
+  margin: 0; 
+  padding: 0; 
+}
