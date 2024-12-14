@@ -587,7 +587,7 @@ a.pagination-item:hover {
   content: "\2212"; /* Minus sign */
 }
 
-.content {
+.submenu-item {
   padding: 0 18px;
   display: none;
   overflow: hidden;
