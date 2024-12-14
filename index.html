@@ -144,8 +144,7 @@ title: Home
     <h2>3.1 Influence of the season on average rating</h2>
     <p>Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.</p>
 
-    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month_Beer_Advocate.html" height="600" width="700"></iframe>
-    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month_Rate_Beer.html" height="600" width="700"></iframe>
+    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html" height="600" width="700"></iframe>
 
 
     <p>We see that the average ratings do not change with the month, at least not significantly, thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the results are kind of boring. However, lets also have a look at how the beers get rated throughut the year depending on the beer style. </p>
@@ -153,8 +152,7 @@ title: Home
     <h2>3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
     <p>Before we analyse the rating, let's first check which beer is a "summery" beer and which beers are "wintery", by comparing the amount of each reviewed by month. The graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year, in order to not crowd the graph with straight and uninteresting lines. The value of 14 was chosen as it offers a nice balance between not hiding important data and now not crowding the graph. The function also removes beer styles which have less than 500 reviews for at least one month, in order to not flood the analysis with beers which have few reviews, where the change in review count might not be significant.</p>
 
-    <iframe src="src/plots/beer_style_ranking_by_amount_Beer_Advocate.html" height="600" width="700"></iframe>
-    <iframe src="src/plots/beer_style_ranking_by_amount_Rate_Beer.html" height="600" width="700"></iframe>
+    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="600" width="700"></iframe>
 
     <p>Beers such as:
         <ul>
@@ -177,8 +175,7 @@ title: Home
 
         Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
     </p>
-    <iframe src="src/plots/beer_style_ranking_by_avg_score_Beer_Advocate.html" height="600" width="700"></iframe>
-    <iframe src="src/plots/beer_style_ranking_by_avg_score_Rate_Beer.html" height="600" width="700"></iframe>
+    <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
 
     <h1>4 Taking bias into account</h1>
     <p>

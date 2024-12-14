@@ -6,7 +6,7 @@ import plotly.express as px
 
     
 
-def plot_and_head_average_rating_per_month(df, df_name):
+def plot_and_head_average_rating_per_month(df):
     """
     Calculate the average rating per month
     :param df: df_rb_ratings
@@ -17,14 +17,12 @@ def plot_and_head_average_rating_per_month(df, df_name):
     # Group by month and calculate the average rating
     monthly_avg_rating = df.groupby('month')['rating'].mean().reset_index()
     
-    fig = px.bar(monthly_avg_rating, x='month', y='rating', title=f"Average Rating per month RateBeers Dataset {df_name}")
+    fig = px.bar(monthly_avg_rating, x='month', y='rating', title='Average Rating per month RateBeers Dataset')
     fig.update_layout(
         xaxis_title='Month',  
         yaxis_title='Average Rating',   
     )
-    
-    name = df_name.split(" ")
-    fig.write_html(f"src/plots/average_rating_per_month_{name[0]}_{name[1]}.html", include_plotlyjs="cdn")
+    fig.write_html("src/plots/average_rating_per_month.html", include_plotlyjs="cdn")
     
 def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
@@ -71,7 +69,7 @@ def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_th
     return beer_style_ranking_by_amount
     
     
-def plot_beer_style_ranking_by_amount(df, df_name, styles, cutoff = 500, interesting_threshhold = 14):
+def plot_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
     Calculate the ranking of beer styles by the amount of reviews per month
     :param df: df_rb_ratings
@@ -101,16 +99,15 @@ def plot_beer_style_ranking_by_amount(df, df_name, styles, cutoff = 500, interes
                     ticktext=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
     fig.update_layout(
-        title='Monthly Rankings of Beer Styles by Review Count for ' + df_name,
+        title='Monthly Rankings of Beer Styles by Review Count',
         legend_title='Beer Style',
         hovermode='closest' 
     )
     
-    name = df_name.split(" ")
-    fig.write_html(f"src/plots/beer_style_ranking_by_amount_{name[0]}_{name[1]}.html", include_plotlyjs="cdn")
+    fig.write_html("src/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
     
 
-def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 14):
+def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
     Calculate the ranking of beer styles by the amount of reviews per month
     :param df: df_rb_ratings
@@ -178,10 +175,9 @@ def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interest
         height=700,
     )
     
-    
     fig.write_html("src/plots/beer_style_ranking_by_amount_subplot.html", include_plotlyjs="cdn")
 
-def plot_beer_style_ranking_by_avg_score(df, df_name, cutoff = 500, interesting_threshhold = 0.1):
+def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhold = 0.1):
     """
     Calculate the average rating per month
     :param df: df_rb_ratings
@@ -241,11 +237,10 @@ def plot_beer_style_ranking_by_avg_score(df, df_name, cutoff = 500, interesting_
                     ticktext=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 
     fig.update_layout(
-        title='Monthly Rankings of Beer Styles by Average Score for '+ df_name,
+        title='Monthly Rankings of Beer Styles by Average Score',
         legend_title='Beer Style',
         hovermode='closest' 
     )
 
-    name = df_name.split(" ")
-    fig.write_html(f"src/plots/beer_style_ranking_by_avg_score__{name[0]}_{name[1]}.html", include_plotlyjs="cdn")
+    fig.write_html("src/plots/beer_style_ranking_by_avg_score.html", include_plotlyjs="cdn")
     
