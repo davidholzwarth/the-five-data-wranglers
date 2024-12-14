@@ -40,8 +40,8 @@ def load_brewery_data(brewery_path="./data/RateBeer/breweries.csv"):
 
 
 def load_rating_data(
-    ba_path="data/BeerAdvocate/BA_ratings.csv",
-    rb_path="data/RateBeer/RB_ratings.csv",
+    ba_path="src/data/BeerAdvocate/BA_ratings.csv",
+    rb_path="src/data/RateBeer/BA_reviews.csv",
 ):
     """
     Loads rating data in pandas dataframes
