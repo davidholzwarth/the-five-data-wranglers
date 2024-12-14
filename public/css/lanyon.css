@@ -594,3 +594,14 @@ a.pagination-item:hover {
   background-color: #333;
   transition: max-height 0.2s ease-out;
 }
+
+.submenu-item a {
+  display: block;
+  color: white;
+  padding: 5px 0;
+  text-decoration: none;
+}
+
+.submenu-item a:hover {
+  background-color: #444;
+}
