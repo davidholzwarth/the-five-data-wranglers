@@ -73,7 +73,7 @@ def rating_evolution_over_time(
     ax1.set_xticks(range(len(ratings_count_filtered.index)))
     ax1.set_xticklabels(ratings_count_filtered.index, rotation=45)
 
-    plt.savefig(path)
+    fig.savefig(path, bbox_inches="tight")
 
 
 # Function for filtering and diplaying the change in reviewers rating over time
@@ -142,8 +142,8 @@ def rating_evolution_with_rating_number(
         response_count.values,
         color="black",
         linestyle="-",
-        label="Number of Responses",
+        label="Number of Reviews",
     )
     ax2.set_ylabel("Number of ratings")
     ax2.legend(loc="upper right")
-    plt.savefig(path)
+    fig.savefig(path, bbox_inches="tight")
