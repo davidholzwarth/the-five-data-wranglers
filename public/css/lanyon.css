@@ -587,7 +587,7 @@ a.pagination-item:hover {
   content: "\2212"; /* Minus sign */
 }
 
-.submenu-item {
+.submenu-items {
   padding: 0 18px;
   display: none;
   overflow: hidden;
@@ -595,13 +595,13 @@ a.pagination-item:hover {
   transition: max-height 0.2s ease-out;
 }
 
-.submenu-item a {
+.submenu-items a {
   display: block;
   color: white;
   padding: 5px 0;
   text-decoration: none;
 }
 
-.submenu-item a:hover {
+.submenu-items a:hover {
   background-color: #444;
 }
