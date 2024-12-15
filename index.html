@@ -211,7 +211,7 @@ title: Home
         <div class="hotspot" style="top: 23px; left: 410px; width: 136px; height: 490px;"
              onclick="showDetails('src/plots/imgs/nn_details.jpg',
                 `<p>In the following image we present the inner workings of the neural net in more detail</p>`,
-                'As we can see, with each layer of the neural network, we reduce the number of nodes per layer. Initially—after transforming the distributions into a latent space of dimension X using the preceding MLPs—we have Y input features. These are then processed through 4 feature extractor layers, each consisting of a fully connected linear layer followed by a non-linear ReLU activation. Finally, there is a linear layer followed by a sigmoid activation to predict the probability that the user will like the beer more than their average rating.')">
+                'As we can see, with each layer of the neural network, we reduce the number of nodes per layer. Initially—after transforming the distributions into a latent space of dimension 15 using the preceding MLPs—we have 94 input features. These are then processed through 4 feature extractor layers, each consisting of a fully connected linear layer followed by a non-linear ReLU activation. The number of nodes descent as follows: 94 &rarr; 52 &rarr; 35 &rarr; 35 &rarr; 35 &rarr; 1. The last layer is a linear layer followed by a sigmoid activation to predict the probability that the user will like the beer more than their average rating.')">
         </div>
 
         <!-- Inner product good node -->
