@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best average foreign ratings</title>
+    <title>Bier Bewertung</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -136,17 +136,19 @@
             const placeholderLeft = document.getElementById('placeholder-left');
             const placeholderRight = document.getElementById('placeholder-right');
 
-            // show flags and country name
+            // Show the flags
             leftFlag.classList.add('visible');
             rightFlag.classList.add('visible');
+
+            // Show the country names
             leftName.classList.add('visible');
             rightName.classList.add('visible');
 
-            // remove the question marks
+            // Hide placeholders
             placeholderLeft.style.display = 'none';
             placeholderRight.style.display = 'none';
 
-            // replace the heart with the rating
+            // Replace heart with the rating
             icon.textContent = "3.85";
         });
     </script>
