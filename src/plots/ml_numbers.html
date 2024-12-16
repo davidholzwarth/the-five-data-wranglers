@@ -12,12 +12,13 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column; /* Ermöglicht Anzeige von zusätzlichem Text unter allem */
+            flex-direction: column;
         }
 
         .container {
             display: flex;
             transform: rotate(-5deg);
+            margin-top: -50px;
         }
 
         .number-container-1 { /* the positions for the following two containers for the numbers are relative to the original position of the arrow */
@@ -59,11 +60,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative; /* Aktiviert relative Positionierung */
+            position: relative;
         }
 
         .image-container img {
-            max-width: 300px;
+            max-width: 200px;
             transform: rotate(2deg);
         }
 
@@ -71,34 +72,35 @@
             font-size: 2rem;
             color: #28a745;
             position: absolute;
-            bottom: -50px; /* Unterhalb der Pfeilgrafik */
-            visibility: hidden; /* Element unsichtbar machen, aber im Layout behalten */
-            opacity: 0; /* Vollständig transparent */
+            bottom: -50px;
+            visibility: hidden;
+            opacity: 0;
             transform: scale(0.8);
             text-align: center;
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .image-container:hover .hover-text {
-            visibility: visible; /* Sichtbar machen */
-            opacity: 1; /* Vollständig sichtbar */
-            transform: scale(1); /* Leichte Animation beim Erscheinen */
+            visibility: visible; /* show the emoji when hovering over the arrow */
+            opacity: 1;
+            transform: scale(1); /* fading in animation*/
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="number-container number-container-1">
-            <p class="number">65%</p>
+            <p class="number">75.6%</p>
             <p class="label">Prediction accuracy<br>without bias features</p>
         </div>
         <div class="image-container">
-            <img src="imgs/arrow.png" alt="Arrow">
-            <div class="hover-text">+10%🥳</div>
+            <!-- "https://www.flaticon.com/free-icons/increase" Increase icons created by Gajah Mada - Flaticon -->
+            <img src="imgs/increase.png" alt="Arrow">
+            <div class="hover-text">+3.7%🥳</div>
         </div>
         <div class="number-container number-container-2">
-            <p class="number">75%</p>
-            <p class="label">Prediction accuracy<br>without bias features</p>
+            <p class="number">79.3%</p>
+            <p class="label">Prediction accuracy<br>with bias features</p>
         </div>
     </div>
 </body>

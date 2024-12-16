@@ -54,14 +54,14 @@ title: Home
     <img src="src/plots/imgs/rating_evolution_with_rating_number_Rate_Beer.png" alt="Plot of rating evolution given amount of ratings provided by user for users in Rate Beer">
 
     <p>
-        The plots show that the relative distribution of extreme ratings, such as the top- and bottom-tier, decreases when the rating number increases. We can also see that the reviewers in Beer Advocate tend to provide a higher rating on average, than the reviewers in Rate Beer. Later on we will see that this interesting finding could be due to the difference in the user's origin. Nearly all the users in the BeerAdvocate database are from the US whereas the distribution of the users' origin in Rate Beer is a bit more diverse. Before we make any conclusions on how the number of reviews provided might affect the rating provided, we should look into whether there exists an overall change in the relative distribution of ratings over time regardless of the number of ratings provided earlier on. 
+        The plots show that the relative distribution of extreme ratings, such as the top- and bottom-tier, decreases when the rating number increases. We can also see that the reviewers in Beer Advocate tend to provide a higher rating on average, than the reviewers in Rate Beer. Later on we will see that this interesting finding could be due to the difference in the user's origin. Nearly all the users in the BeerAdvocate database are from the US whereas the distribution of the users' origin in Rate Beer is a bit more diverse. Before we make any conclusions on how the number of reviews provided might affect the rating provided, we should look into whether there exists an overall change in the relative distribution of ratings over time regardless of the number of ratings provided earlier on.
     </p>
 
     <img src="src/plots/imgs/rating_evolution_over_time_Beer_Advocate.png" alt="Plot of rating evolution over time in Beer advocate">
     <img src="src/plots/imgs/rating_evolution_over_time_Rate_Beer.png" alt="Plot of rating evolution over time in Rate Beer" >
 
     <p>
-        For the Beer Advocate dataset we can see an opposite tendency of previous finding, as the amount of top-tier ratings increases over time. The previous finding can therefore not be explained only by the change in ratings over time. Furthermore, a high spike in the number of reviews in 2014 indicated that a lot of the users in BeerAdvocate has provided several reviews during that year. 
+        For the Beer Advocate dataset we can see an opposite tendency of previous finding, as the amount of top-tier ratings increases over time. The previous finding can therefore not be explained only by the change in ratings over time. Furthermore, a high spike in the number of reviews in 2014 indicated that a lot of the users in BeerAdvocate has provided several reviews during that year.
 
         For the distribution of ratings in the Rate Beer dataset there does seem to be a similar tendency as the previous plot of the relation between rating number and rating distribution. The increase in number of ratings provided exhibits a more linear trend compared to the Beer Advocate dataset. For the Rate Beer dataset we can not conclude that the amount of rating provided is caused by the rating number as there appears to be a similar trend over the years, which could be caused by other factors such as an increase in the amount of premium beers available. If beers in general tend to have a higher standard, this could make it hard to differentiate between the different beers thus could lead to a reduction of top- and bottom-tier ratings over the years.
     </p>
@@ -200,7 +200,7 @@ title: Home
         We trained the network on 230,000 ratings from the BeerAdvocate dataset, and it achieved the following results on a test dataset:
     </p>
 
-    <iframe src="src/plots/ml_numbers.html" width="800" height="520" style="border:none;"></iframe>
+    <iframe src="src/plots/ml_numbers.html" width="820" height="480" style="border:none;"></iframe>
 
     <p>As with many of our other articles, we have included some additional information below for those who are interested in understanding how the predictions are made in detail, how our neural network is structured, and which features are taken into account.</p>
 
@@ -211,11 +211,11 @@ title: Home
         <div class="hotspot" style="top: 23px; left: 410px; width: 136px; height: 490px;"
              onclick="showDetails('src/plots/imgs/nn_details.jpg',
                 `<p>In the following image we present the inner workings of the neural net in more detail</p>`,
-                'As we can see, with each layer of the neural network, we reduce the number of nodes per layer. Initially—after transforming the distributions into a latent space of dimension X using the preceding MLPs—we have Y input features. These are then processed through 4 feature extractor layers, each consisting of a fully connected linear layer followed by a non-linear ReLU activation. Finally, there is a linear layer followed by a sigmoid activation to predict the probability that the user will like the beer more than their average rating.')">
+                'As we can see, with each layer of the neural network, we reduce the number of nodes per layer. Initially—after transforming the distributions into a latent space of dimension 15 using the preceding MLPs—we have 94 input features. These are then processed through 4 feature extractor layers, each consisting of a fully connected linear layer followed by a non-linear ReLU activation. The number of nodes descent as follows: 94 &rarr; 52 &rarr; 35 &rarr; 35 &rarr; 35 &rarr; 1. The last layer is a linear layer followed by a sigmoid activation to predict the probability that the user will like the beer more than their average rating.')">
         </div>
 
         <!-- Inner product good node -->
-        <div class="hotspot hotspot-1" style="top:295px; left: 260px; width: 82px; height: 28px;"
+        <div class="hotspot hotspot-1" style="top:300px; left: 260px; width: 82px; height: 32px;"
              onclick="showDetails('',
                 `<p>Here, we compute the inner product of the word distributions for the keywords we defined, derived from positive reviews about this beer and positive reviews by this user. The inner product will be larger the more similar these distributions are. Thus, if a specific keyword appears frequently in positive reviews about the beer we want to predict and also frequently in the positive reviews of the user for whom we are predicting, it will contribute to the inner product. </p>
                  <p>The idea behind this is that if a user particularly enjoys malty beers, they will often use the word <em>malty</em> in their positive ratings. Similarly, if a beer is especially malty, other users who rate this beer positively will likely also use the word frequently. In this way, we aim to determine how well the beer matches the user's personal preferences.</p>`,
@@ -223,18 +223,18 @@ title: Home
         </div>
 
         <!-- Inner product bad node -->
-        <div class="hotspot hotspot-1" style="top: 360px; left: 260px; width: 82px; height: 28px;"
+        <div class="hotspot hotspot-1" style="top: 355px; left: 257px; width: 82px; height: 32px;"
              onclick="showDetails('',
                 `<p>Here, we compute the inner product of the word distributions for the keywords we defined, derived from negative reviews about this beer and negative reviews by this user. The inner product will be larger the more similar these distributions are. Thus, if a specific keyword appears frequently in negative reviews about the beer we want to predict and also frequently in the negative reviews of the user for whom we are predicting, it will contribute to the inner product. </p>
                  <p> The idea behind this is that if a user particularly dislikes <em>acidic</em> beers, they will often use the word <em>acidic</em> in their negative ratings. Similarly, if a beer is especially acidic, other users who rate this beer negatively will likely also use the word frequently. In this way, we aim to determine how well the beer matches the user's personal aversions.</p>`,
                 '')">
         </div>
 
-        <!-- User stats node -->
+        <!-- User bias node -->
         <div class="hotspot hotspot-2" style="top: 485px; left: 23px; width: 82px; height: 18px;"
              onclick="showDetails('',
                 `<p>
-                  The <strong>User Stats</strong> represent a significant part of the features and include much of the bias-related information about the user that we identified in the previous sections. It includes:
+                  The <strong>User Bias</strong> represent a significant part of the features and include much of the bias-related information about the user that we identified in the previous sections. It includes:
                 </p>
                 <ol>
                   <li>
@@ -254,35 +254,48 @@ title: Home
         </div>
 
         <!-- User word distribution node -->
-        <div class="hotspot hotspot-2" style="top: 412px; left: 23px; width: 82px; height: 48px;"
+        <div class="hotspot hotspot-2" style="top: 409px; left: 23px; width: 83px; height: 51px;"
              onclick="showDetails('',
                 `As we described earlier in the text, we compiled a list of words that are significant for describing beer flavors. Here, we calculate the empirical distribution of these words in the ratings given by the user for whom we want to make a prediction.`,
                 '')">
         </div>
 
-        <!-- Distance node -->
-        <div class="hotspot hotspot-2" style="top: 259px; left: 23px; width: 82px; height: 18px;"
+        <!-- Location bias node -->
+        <div class="hotspot hotspot-2" style="top: 259px; left: 23px; width: 83px; height: 18px;"
              onclick="showDetails('',
-                `Here, we include the distance of the user to the brewery of the beer, as previously examined in Section 2.2, as an additional bias feature.`,
+                `<p>
+                  The <strong>Location Bias</strong> includes locational bias information as we discussed it in section 2. It includes:
+                </p>
+                <ol>
+                  <li>
+                    <code>distance</code>: The distance between th user and the brewery as discussed in section 2.2.
+                  </li>
+                  <li>
+                    <code>domestic_us_aggr</code>: A binary feature that's 1 if the brewery of the beer and the user location are identical and 0 otherwise. In this feature we see the USA as one country.
+                  </li>
+                  <li>
+                    <code>domestic_us_split</code>: Similar to <code>domestic_us_aggr</code>, but we differentiate between different US states, meaning that it's 0 if the user and the brewery both come from the US, but from different US states.
+                  </li>
+                </ol>`,
                 '')">
         </div>
 
         <!-- Beer word distribution node -->
-        <div class="hotspot hotspot-2" style="top: 152px; left: 23px; width: 82px; height: 48px;"
+        <div class="hotspot hotspot-2" style="top: 152px; left: 23px; width: 83px; height: 51px;"
              onclick="showDetails('',
                 `As we described earlier in the text, we compiled a list of words that are significant for describing beer flavors. Here, we calculate the empirical distribution of these words in the ratings given for this beer (excluding, of course, the rating we want to predict).`,
                 '')">
         </div>
 
         <!-- Beer mean node -->
-        <div class="hotspot hotspot-2" style="top: 110px; left: 23px; width: 82px; height: 18px;"
+        <div class="hotspot hotspot-2" style="top: 108px; left: 23px; width: 83px; height: 19px;"
              onclick="showDetails('',
                 `We also include the average rating of all other users for this beer in our prediction.`,
                 '')">
         </div>
 
         <!-- Month node -->
-        <div class="hotspot hotspot-2" style="top: 33px; left: 23px; width: 82px; height: 18px;"
+        <div class="hotspot hotspot-2" style="top: 33px; left: 23px; width: 83px; height: 19px;"
              onclick="showDetails('',
                 `We include the month in which the rating occurs as an additional temporal bias, as we have already identified it as a highly significant feature in Section 3.`,
                 '')">
@@ -296,21 +309,21 @@ title: Home
         </div>
 
         <!-- MLP node 2-->
-        <div class="hotspot" style="top: 182px; left: 281px; width: 39px; height: 18px;"
+        <div class="hotspot" style="top: 185px; left: 281px; width: 39px; height: 18px;"
              onclick="showDetails('',
                 `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
                 '')">
         </div>
 
         <!-- MLP node 3-->
-        <div class="hotspot" style="top: 412px; left: 281px; width: 39px; height: 18px;"
+        <div class="hotspot" style="top: 409px; left: 281px; width: 39px; height: 18px;"
              onclick="showDetails('',
                 `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
                 '')">
         </div>
 
         <!-- MLP node 4-->
-        <div class="hotspot" style="top: 440px; left: 281px; width: 39px; height: 18px;"
+        <div class="hotspot" style="top: 443px; left: 281px; width: 39px; height: 18px;"
              onclick="showDetails('',
                 `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
                 '')">
