@@ -572,7 +572,7 @@ a.pagination-item:hover {
 }
 
 .collapsible:hover, .collapsible.active {
-  background-color: #202020;
+  background-color: rgba(255,255,255,.1);
 }
 
 .collapsible::after {
@@ -603,5 +603,5 @@ a.pagination-item:hover {
 }
 
 .submenu-items a:hover {
-  background-color: #202020;
+  background-color: rgba(255,255,255,.1);
 }
