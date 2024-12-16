@@ -2,7 +2,11 @@
   var toggle = document.querySelector('.sidebar-toggle');
   var sidebar = document.querySelector('#sidebar');
   var checkbox = document.querySelector('#sidebar-checkbox');
-  var lastScrollTop = 0;
+
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault(); 
+    checkbox.checked = !checkbox.checked;
+  });
 
   document.addEventListener('click', function(e) {
     var target = e.target;
@@ -11,13 +15,7 @@
        sidebar.contains(target) ||
        (target === checkbox || target === toggle)) return;
 
-    lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
     checkbox.checked = false;
-
-    setTimeout(function() {
-      window.scrollTo(0, lastScrollTop);
-    }, 0);
   }, false);
 })(document);
 
