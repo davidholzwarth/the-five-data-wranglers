@@ -23,6 +23,8 @@ def plot_and_head_average_rating_per_month(df):
         yaxis_title='Average Rating',   
     )
     fig.write_html("src/plots/average_rating_per_month.html", include_plotlyjs="cdn")
+    print(f"Average rating per month: f{monthly_avg_rating.mean()} \n Stdev of average rating per month: f{monthly_avg_rating.std()}")
+
     
 def filter_beer_style_ranking_by_amount(df, styles, cutoff = 500, interesting_threshhold = 10):
     """
