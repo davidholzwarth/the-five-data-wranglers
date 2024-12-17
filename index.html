@@ -196,7 +196,7 @@ title: Home
 
     <h1 id="section4">4 Taking bias into account</h1>
     <p>
-        Finally, let's now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers and how they ultimately affect the ratings, but some might still wonder: 
+        Finally, let's now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers and how they ultimately affect the ratings, but some might still wonder:
         <q>What's the point of all this?</q>
         <q>Who benefits from knowing whether a beer reviewer is biased in their decision?</q>
         Also, we only evaluated each possible bias factor on its own, not connecting them with each other. Possibly some biases can only be seen when set into relation with each other.
@@ -216,7 +216,7 @@ title: Home
         <div class="hotspot" style="top: 23px; left: 410px; width: 136px; height: 490px;"
              onclick="showDetails('src/plots/imgs/nn_details.jpg',
                 `<p>In the following image we present the inner workings of the neural net in more detail</p>`,
-                'As we can see, with each layer of the neural network, we reduce the number of nodes per layer. Initially—after transforming the distributions into a latent space of dimension 15 using the preceding MLPs—we have 94 input features. These are then processed through 4 feature extractor layers, each consisting of a fully connected linear layer followed by a non-linear ReLU activation. The number of nodes descent as follows: 94 &rarr; 52 &rarr; 35 &rarr; 35 &rarr; 35 &rarr; 1. The last layer is a linear layer followed by a sigmoid activation to predict the probability that the user will like the beer more than their average rating.')">
+                'As depicted, with each layer of the neural network we reduce the number of nodes per layer. Initially—after transforming the distributions into a latent space of dimension 15 using the preceding MLPs—we have 94 input features. These are then processed through 4 feature extractor layers, each consisting of a fully connected linear layer followed by a non-linear ReLU activation. The number of nodes descends as follows: 94 → 52 → 35 → 25 → 20 → 1. The last layer is a linear layer followed by a sigmoid activation to predict the probability that the user will like the beer more than their average rating.')">
         </div>
 
         <!-- Inner product good node -->
@@ -261,7 +261,19 @@ title: Home
         <!-- User word distribution node -->
         <div class="hotspot hotspot-2" style="top: 409px; left: 23px; width: 83px; height: 51px;"
              onclick="showDetails('',
-                `As we described earlier in the text, we compiled a list of words that are significant for describing beer flavors. Here, we calculate the empirical distribution of these words in the ratings given by the user for whom we want to make a prediction.`,
+                `<p>We created a list of words commonly used to describe beer positively or negatively. Words like <q>malty</q> or <q>acidic</q> are often used by users to express a positive or negative opinion about a beer. Additionally, we included the words used to identify experienced users from Section 1.3. This resulted in a list of 77 words.
+For a given user, we divided their ratings into two categories:
+</p>
+
+    <p>For a given beer, we divided all the ratings about it into two categories:</p>
+    <ul>
+        <li>a) Ratings strictly below 2.8 (considered <strong>bad ratings</strong>).</li>
+        <li>b) Ratings strictly above 3.7 (considered <strong>good ratings</strong>).</li>
+    </ul>
+
+    <p>We calculated the empirical distribution words from our list in the texts of the good and the texts of the bad ratings of this user.</p>
+
+    <p> Insert some might wonder here</p>`,
                 '')">
         </div>
 
@@ -288,21 +300,31 @@ title: Home
         <!-- Beer word distribution node -->
         <div class="hotspot hotspot-2" style="top: 152px; left: 23px; width: 83px; height: 51px;"
              onclick="showDetails('',
-                `As we described earlier in the text, we compiled a list of words that are significant for describing beer flavors. Here, we calculate the empirical distribution of these words in the ratings given for this beer (excluding, of course, the rating we want to predict).`,
+                `<p>We created a list of words commonly used to describe beer positively or negatively. <q>Words like malty</q> or <q>acidic</q> are often used by users to express a positive or negative opinion about a beer. Additionally, we included the words used to identify experienced users from Section 1.3. This resulted in a list of 77 words.</p>
+
+    <p>For a given beer, we divided all the ratings about it into two categories:</p>
+    <ul>
+        <li>a) Ratings strictly below 2.8 (considered <strong>bad ratings</strong>).</li>
+        <li>b) Ratings strictly above 3.7 (considered <strong>good ratings</strong>).</li>
+    </ul>
+
+    <p>We calculated the empirical distribution of words from our list in the texts of the good and the texts of the bad ratings.</p>
+
+    <p>Some might also wonder why we use fixed thresholds for good and bad ratings when considering all ratings for a particular beer, rather than sorting the beer's ratings and viewing the top and bottom thirds as good and bad ratings. However, there are certainly some beers that most users simply do not enjoy. If we were to define the top third of ratings as good, we would end up classifying many reviews that criticize the beer as <q>good</q> ratings. Conversely, the same effect occurs for beers that are very well-liked by the average user. For this reason, we use fixed thresholds.</p>`,
                 '')">
         </div>
 
         <!-- Beer mean node -->
         <div class="hotspot hotspot-2" style="top: 108px; left: 23px; width: 83px; height: 19px;"
              onclick="showDetails('',
-                `We also include the average rating of all other users for this beer in our prediction.`,
+                `The average rating of all the other users for this specific beer.`,
                 '')">
         </div>
 
         <!-- Month node -->
         <div class="hotspot hotspot-2" style="top: 33px; left: 23px; width: 83px; height: 19px;"
              onclick="showDetails('',
-                `We include the month in which the rating occurs as an additional temporal bias, as we have already identified it as a highly significant feature in Section 3.`,
+                ` We include the month in which the rating occurs as a one-hot vector to embed the temporal bias. Although we assessed in Section 3 that seasonality does not introduce bias on its own, it is possible that effects come into play when seasonality is combined with other characteristics.`,
                 '')">
         </div>
 
