@@ -181,30 +181,18 @@ title: Home
 
     <h1 id="section4">4 Taking bias into account</h1>
     <p>
-        Let us now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers, but some might still wonder,
-        <q>What's the point of all this? Who benefits from knowing whether a beer reviewer is biased in their decision?</q>
-    </p>
-    <p>
-        As already mentioned in the introduction, this knowledge can, of course, be useful to individual users trying to determine which beers they might enjoy and which reviews they can trust.
-        More importantly, however, this knowledge is particularly valuable for large corporations and a significant industry—the advertising industry.
-    </p>
-    <p>
-        If one can accurately assess a user's bias, this information can be incorporated into decisions about which beer to advertise to them and which not to.
-        It is undeniable that bias plays a significant role in purchasing decisions
-        (consider, for example, the stigmas associated with products from certain countries, and so on).
-    </p>
-    <p>
-        In the following section, we have compiled everything we have learned so far and attempted to build a kind of recommender system.
-        This system is a neural network designed to predict, based on various features about the user and the beer—including bias features—whether a user would rate a beer higher or lower than their current average rating.
-        This prediction could then guide decisions on whether to advertise a particular beer to the user—or not.
-    </p>
-    <p>
-        We trained the network on 230,000 ratings from the BeerAdvocate dataset, and it achieved the following results on a test dataset:
-    </p>
+        Finally, let's now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers and how they ultimately affect the ratings, but some might still wonder: 
+        <q>What's the point of all this?</q>
+        <q>Who benefits from knowing whether a beer reviewer is biased in their decision?</q>
+        Also, we only evaluated each possible bias factor on its own, not connecting them with each other. Possibly some biases can only be seen when set into relation with each other.
 
-    <iframe src="src/plots/ml_numbers.html" width="820" height="480" style="border:none; margin-left: -50px"></iframe>
-
-    <p>As with many of our other articles, we have included some additional information below for those who are interested in understanding how the predictions are made in detail, how our neural network is structured, and which features are taken into account.</p>
+    </p>
+    <p>
+        As already mentioned in the introduction, this knowledge can, of course, be useful to individual users trying to determine which beers they might enjoy and which reviews they can trust. It’s particularly valuable for large corporations and a significant industry—the advertising industry. If one can accurately assess a user's bias, this information can be incorporated into decisions about which beer to advertise to them and which not to. It is undeniable that biases play a significant role in purchasing decisions (e.g., the stigmas associated with products from certain countries).
+    </p>
+    <p>
+        To do so, we have compiled everything we have learned so far and built a user-specific beer preference prediction system. It is based on a neural network designed to predict, based on all the collected information about the user and the beer—including the bias-inductive features—whether a user would rate a beer higher or lower than their current average rating. This prediction could then guide decisions on which beer to advertise.
+    </p>
 
     <div class="image-container">
         <img id="main-image" src="src/plots/imgs/flowchart.png" alt="Flowchart of the feature extraction" />
@@ -345,6 +333,15 @@ title: Home
         <img id="detail-image" src="" alt="" style="display: none;" />
         <p id="info-text2"></p>
     </div>
+
+    <p>On that end, we have parsed ratings from 230,000 reviews from the BeerAdvocate dataset, trained a neural network on predicting the user’s opinion and evaluated it on a test dataset. When only including the most basic information about the beer, namely the beer type and the beer’s average rating, the model can only correctly predict the preference in 62.5% of the reviews - not much better than guessing by chance. Including the used vocabulary regarding the user and beer, this raises the accuracy to about 75.6% emphasizing the efficacy of the extracted vocabulary. Additionally using all aforementioned biases, gives us another <b>3.7%</b> of accuracy - clearly showing the susceptibility of the reviewers towards the biases.
+    </p>
+
+    <iframe src="src/plots/ml_numbers.html" width="820" height="480" style="border:none; margin-left: -50px"></iframe>
+
+    <p>Although this may not sound like much compared to the text features, it is a significant difference—especially when considering the vast amount of money and effort that major companies invest in automated advertising to achieve even a few percentage points of improvement in hit rates. These small improvements often result in significantly higher profits. Also the text features very likely include parts of the user bias as well - meaning that a user also writes more critical reviews about beers he’s biased about.
+    </p>
+
 
     <script>
     function showDetails(imageSrc, description1, description2) {
