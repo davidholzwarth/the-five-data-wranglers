@@ -26,7 +26,10 @@ title: Home
             background-color: rgba(255, 255, 0, 0.5);
         }
         .hotspot-2:hover {
-            background-color: rgba(0, 0, 200, 0.4);
+            background-color: rgba(127, 219, 255, 0.4);
+        }
+        .hotspot-3:hover {
+            background-color: rgba(255, 0, 255, 0.5);
         }
         .info-box {
             margin-top: 20px;
@@ -325,6 +328,13 @@ title: Home
         <div class="hotspot" style="top: 443px; left: 281px; width: 39px; height: 18px;"
              onclick="showDetails('',
                 `Since the vocabulary for which we create the distributions is very large (77 words), it would be excessive to provide the neural network directly with all the raw values and require the initial layers to contain so many neurons (4 such distributions are passed, meaning the distributions would account for 77x4=308, which would constitute the majority of all features). Therefore, we use a preceding multilayer perceptron for each of the distributions, which learns a significantly lower-dimensional (X dimensions) representation of the distributions in a latent space during the training process. `,
+                '')">
+        </div>
+
+      <!-- Prediction node -->
+        <div class="hotspot hotspot-3" style="top: 500px; left: 500px; width: 80px; height: 40px;"
+             onclick="showDetails('',
+                `The last layer of the neural network maps from 35 values to one, and instead of a ReLU activation function, a sigmoid activation function is used. This gives us a value between 0 and 1, which can also be interpreted as the model's confidence. We now apply a threshold of 0.5 to this value, meaning: if the value is less than 0.5, we predict that the user would not rate the beer higher than their average rating from previous reviews; if it is greater than 0.5, we predict that the user would rate the beer higher than their average rating from previous reviews.`,
                 '')">
         </div>
 
