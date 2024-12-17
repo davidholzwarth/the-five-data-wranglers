@@ -107,7 +107,7 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff=500, interesting_thresh
         legend=dict(
             orientation='h',  # Set the legend to horizontal
             x=0.5,  # Center it horizontally
-            y=-0.2,  # Move it below the graph
+            y=-0.0,  # Move it below the graph
             xanchor='center',
             yanchor='top'
         ),
@@ -115,76 +115,6 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff=500, interesting_thresh
 
     fig.write_html("src/plots/beer_style_ranking_by_amount.html", include_plotlyjs="cdn")
 
-
-def plot_beer_style_ranking_by_amount_subplot(df, styles, cutoff = 500, interesting_threshhold = 10):
-    """
-    Calculate the ranking of beer styles by the amount of reviews per month
-    :param df: df_rb_ratings
-    :param cutoff: the minimum amount of reviews per style. Default value 500
-    :param interesting_threshhold: the minimum difference in max and min to be considered interesting. Default value 10
-    """
-    beer_style_ranking_by_amount = filter_beer_style_ranking_by_amount(df, styles, cutoff, interesting_threshhold)
-    nr_cols = 3
-    nr_rows = len(beer_style_ranking_by_amount)//nr_cols if len(beer_style_ranking_by_amount)%nr_cols == 0 else len(beer_style_ranking_by_amount)//nr_cols + 1
-
-    fig = make_subplots(
-        rows=nr_rows,
-        cols=nr_cols,
-        shared_xaxes="all",
-        shared_yaxes="all",
-        x_title = "Month",
-        y_title = "Rank",
-    )
-
-    row_current = 1
-    column_current = 1
-
-    # Calculating range for y axis
-    all_y_values = beer_style_ranking_by_amount.values.flatten()
-    y_min = min(all_y_values)
-    y_max = max(all_y_values)
-
-    for style in beer_style_ranking_by_amount.index:
-        x = beer_style_ranking_by_amount.columns  # Months
-        y = beer_style_ranking_by_amount.loc[style]  # Ranks for this style
-        fig.add_trace(go.Scatter(
-            x=x,
-            y=y,
-            mode='lines+markers',
-            name=style,
-            text=[style] * len(x),
-            hovertemplate=(
-                '<b>Style: %{text}</b><br>'
-                '<b>Month: %{x}</b><br>'
-                '<b>Rank: %{y}</b><br>'
-                '<extra></extra>'
-            ),
-        ), row=row_current, col=column_current)
-        column_current += 1
-        if column_current > nr_cols:
-            column_current = 1
-            row_current += 1
-
-    # Reverse y-axis so that rank 1 is at the top
-    fig.update_yaxes(
-        range=[y_min, y_max],
-        autorange='reversed',
-        automargin=True
-    )
-
-    fig.update_xaxes(
-        tickvals=list(range(1, 13)),
-        ticktext=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    )
-
-    fig.update_layout(
-        title='Monthly Rankings of Beer Styles by Review Count',
-        legend_title='Beer Style',
-        hovermode='closest',
-        height=700,
-    )
-
-    fig.write_html("src/plots/beer_style_ranking_by_amount_subplot.html", include_plotlyjs="cdn")
 
 def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhold = 0.1):
     """
@@ -248,7 +178,14 @@ def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhol
     fig.update_layout(
         title='Monthly Rankings of Beer Styles by Average Score',
         legend_title='Beer Style',
-        hovermode='closest'
+        hovermode='closest',
+        legend=dict(
+            orientation='h',  # Set the legend to horizontal
+            x=0.5,  # Center it horizontally
+            y=-0.0,  # Move it below the graph
+            xanchor='center',
+            yanchor='top'
+        ),
     )
 
     fig.write_html("src/plots/beer_style_ranking_by_avg_score.html", include_plotlyjs="cdn")
