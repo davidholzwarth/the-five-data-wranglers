@@ -26,7 +26,7 @@ title: Home
             background-color: rgba(255, 255, 0, 0.5);
         }
         .hotspot-2:hover {
-            background-color: rgba(127, 219, 255, 0.4);
+            background-color: rgba(127, 219, 255, 0.5);
         }
         .hotspot-3:hover {
             background-color: rgba(255, 0, 255, 0.5);
@@ -332,7 +332,7 @@ title: Home
         </div>
 
       <!-- Prediction node -->
-        <div class="hotspot hotspot-3" style="top: 500px; left: 500px; width: 80px; height: 40px;"
+        <div class="hotspot hotspot-3" style="top: 250px; left: 550px; width: 80px; height: 64px;"
              onclick="showDetails('',
                 `The last layer of the neural network maps from 35 values to one, and instead of a ReLU activation function, a sigmoid activation function is used. This gives us a value between 0 and 1, which can also be interpreted as the model's confidence. We now apply a threshold of 0.5 to this value, meaning: if the value is less than 0.5, we predict that the user would not rate the beer higher than their average rating from previous reviews; if it is greater than 0.5, we predict that the user would rate the beer higher than their average rating from previous reviews.`,
                 '')">
