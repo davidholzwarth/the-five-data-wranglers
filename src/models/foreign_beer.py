@@ -308,13 +308,12 @@ def plot_bar_chart(df_plot, save=True):
     df_plot.reset_index(drop=True, inplace=True)
     df_plot.sort_values(ascending=False, by="rating", inplace=True)
 
-    # Use the first color from the CB_color_cycle list
     fig = go.Figure(
         data=[
             go.Bar(
                 x=df_plot["location"],
                 y=df_plot["rating"],
-                marker=dict(color=CB_color_cycle[0])  # First color from CB_color_cycle
+                marker=dict(color=CB_color_cycle[0])  # first color from CB_color_cycle
             )
         ]
     )
