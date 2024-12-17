@@ -4,7 +4,7 @@
   var checkbox = document.querySelector('#sidebar-checkbox');
 
   toggle.addEventListener('click', function(e) {
-    e.preventDefault(); 
+    e.preventDefault();  //prevents page from scrolling to the top on click of the toggle button
     checkbox.checked = !checkbox.checked;
   });
 
@@ -21,6 +21,24 @@
 
 // Code for collabsible sidebar menu
 document.addEventListener("DOMContentLoaded", function() {
+
+  function scrollToAnchor() {
+    var hash = window.location.hash;
+    if (hash) {
+      var target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  scrollToAnchor(); //scrolls to ankchor in url on page load
+
+  // Scroll to anchor on URL change
+  window.addEventListener('hashchange', function() {
+    scrollToAnchor();
+  });
+
   var coll = document.getElementsByClassName("collapsible");
   for (var i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
