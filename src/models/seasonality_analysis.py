@@ -107,7 +107,7 @@ def plot_beer_style_ranking_by_amount(df, styles, cutoff=500, interesting_thresh
         legend=dict(
             orientation='h',  # Set the legend to horizontal
             x=0.5,  # Center it horizontally
-            y=-0.0,  # Move it below the graph
+            y=-0.2,  # Move it below the graph
             xanchor='center',
             yanchor='top'
         ),
@@ -182,7 +182,7 @@ def plot_beer_style_ranking_by_avg_score(df, cutoff = 500, interesting_threshhol
         legend=dict(
             orientation='h',  # Set the legend to horizontal
             x=0.5,  # Center it horizontally
-            y=-0.0,  # Move it below the graph
+            y=-0.2,  # Move it below the graph
             xanchor='center',
             yanchor='top'
         ),
