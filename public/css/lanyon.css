@@ -588,13 +588,11 @@ a.pagination-item:hover {
 }
 
 .submenu-items {
+  padding: 0 18px;
+  display: block; 
   overflow: hidden;
   background-color: #202020;
   transition: max-height 0.2s ease-out;
-  display: block;
-  color: white;
-  padding: 5px 0;
-  text-decoration: none;
 }
 
 .submenu-items a {
