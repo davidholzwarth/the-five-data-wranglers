@@ -558,7 +558,7 @@ a.pagination-item:hover {
 }
 
 .submenu-items {
-  padding: 0.1rem 3rem;
+  padding: 0 3rem;
   display: block; 
   overflow: hidden;
   background-color: #202020;
@@ -566,6 +566,7 @@ a.pagination-item:hover {
 }
 
 .submenu-items a {
+  padding: 0 3rem;
   display: block;
   color: white;
   text-decoration: none;
