@@ -558,7 +558,7 @@ a.pagination-item:hover {
 }
 
 .submenu-items {
-  padding: 0 0rem;
+  padding: 0 3rem;
   margin: 0;
   display: block; 
   overflow: hidden;
