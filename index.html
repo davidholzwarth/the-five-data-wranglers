@@ -82,25 +82,25 @@ title: Home
 
     <h1 id="section1">1 Influence of the user's experience</h1>
     <h2 id="section1-1">1.1 Analysis of experience based on amount of reviews</h2>
-    <p>Firstly we want to look into whether the experience of a user, defined as the amount of reviews provided on Rate Beer or Beer Advocate, will affect their rating. The graph below shows the ratings the users give depending on how many reviews they have written during the lifetime of their account. A second x-axis shows the total amount of ratings provided at the given rating amount, to ensure that we have a sufficient sample size.</p>
+    <p>Firstly we want to look into whether the experience of a user, defined as the amount of reviews provided on RateBeer or BeerAdvocate, will affect their rating. The graph below shows the ratings the users give depending on how many reviews they have written during the lifetime of their account. A second x-axis shows the total amount of ratings provided at the given rating amount, to ensure that we have a sufficient sample size.</p>
 
-    <img src="src/plots/imgs/rating_evolution_with_rating_number_Beer_Advocate.png" alt="Plot of rating evolution given amount of ratings provided by user for users in Beer advocate">
-    <img src="src/plots/imgs/rating_evolution_with_rating_number_Rate_Beer.png" alt="Plot of rating evolution given amount of ratings provided by user for users in Rate Beer">
+    <img src="src/plots/imgs/rating_evolution_with_rating_number_Beer_Advocate.png" alt="Plot of rating evolution given amount of ratings provided by user for users in BeerAdvocate">
+    <img src="src/plots/imgs/rating_evolution_with_rating_number_Rate_Beer.png" alt="Plot of rating evolution given amount of ratings provided by user for users in RateBeer">
 
     <p>The plots show that the relative distribution of extreme ratings, such as the top- and bottom-tier, decreases as the review count increases. We can also see that the reviewers in BeerAdvocate tend to provide a higher rating on average, than the reviewers in RateBeer. Later on we will see that this interesting finding could be due to the difference in the user's origin. Nearly all the users in the BeerAdvocate database are from the US whereas the distribution of the users' origin in RateBeer is a bit more diverse. Before we make any conclusions on how the number of reviews published might affect the user’s ratings, we should look into whether there exists a general change in the relative distribution of ratings over time by all users.</p>
 
-    <img src="src/plots/imgs/rating_evolution_over_time_Beer_Advocate.png" alt="Plot of rating evolution over time in Beer advocate">
-    <img src="src/plots/imgs/rating_evolution_over_time_Rate_Beer.png" alt="Plot of rating evolution over time in Rate Beer" >
+    <img src="src/plots/imgs/rating_evolution_over_time_Beer_Advocate.png" alt="Plot of rating evolution over time in BeerAdvocate">
+    <img src="src/plots/imgs/rating_evolution_over_time_Rate_Beer.png" alt="Plot of rating evolution over time in RateBeer" >
 
     <p>For the BeerAdvocate dataset we can see that the distribution of ratings over the years does not follow the same trend as the distribution of ratings with experience level. The previous finding of less extreme ratings with increasing experience level can therefore not be explained by a general  change in rating behavior over time. For the RateBeer dataset we can not conclude that a decrease in extreme ratings is caused by the reviewer’s experience, as it seems to have been a general trend of giving less extreme ratings over the years. This general trend could be due to other factors such as an increase in the amount of premium beers available. If beers in general tend to have a higher standard, this could make it hard to differentiate between the different beers and thus could lead to a reduction of top- and bottom-tier ratings over the years.</p>
 
     <h2 id="section1-2">1.2 Experience analysis for 10 most reviewed beer styles</h2>
     <p>Alright, but could these general trends of the experienced reviewers giving less extreme ratings be observed if we zoom on individual beer styles? For this part, we consider 50 reviews given as the threshold to be an experienced beer reviewer and take the 10 most reviewed beer styles of BeerAdvocate and RateBeer to plot the distribution of their ratings for new, experienced and all reviewers.  This classifies roughly a fourth of  users as experienced (29% in the BeerAdvocate dataset and 25% in the RateBeer dataset).</p>
-    <img src="src/plots/imgs/top10styles_beer_advocate.png" alt="Plot of the top 10 most reviewed beer styles for Beer Advocate">
+    <img src="src/plots/imgs/top10styles_beer_advocate.png" alt="Plot of the top 10 most reviewed beer styles for BeerAdvocate">
     <p>In these figures we see a few striking particularities. Firstly, we notice that the “all” plots are very similar to the “experienced” plots, suggesting that the ratings are dominated by the experienced reviewers. This implies that experienced reviewers write more reviews and that they review different beers of the same style. As such, it is a minority of reviewers who actually influence the ratings of beer styles the most.</p>
     <p>Experienced users also tend to not rate popular beer styles positively; in fact they rate them worse than inexperienced users do. This suggests that with greater experience, drinkers tend to have higher standards for their beers. Thus, when reading a review from an inexperienced versus an experienced beer drinker for the same beer, one should consider this potential bias in shaping expectations or assessments.</p>
     <p>Is this also the case for the RateBeer dataset?</p>
-    <img src="src/plots/imgs/top10styles_rate_beer.png" alt="Plot of the top 10 most reviewed beer styles for Rate Beer">
+    <img src="src/plots/imgs/top10styles_rate_beer.png" alt="Plot of the top 10 most reviewed beer styles for RateBeer">
     <p>The lower general ratings and the domination of reviews by experienced users holds true for the RateBeer dataset as well. It is also more evident to see in the RateBeer plot that the ratings of new reviewers are less concentrated around the mean. Perhaps the apparent indecisiveness of the new reviewers is partly due to a relative lack of knowledge or consensus on what makes a “good” beer.</p>
 
     <h2 id="section1-3">1.3 Analysis of experience based on the user's vocabulary</h2>
