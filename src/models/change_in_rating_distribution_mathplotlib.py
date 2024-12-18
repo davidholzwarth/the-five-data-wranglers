@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 import numpy as np
-from src.utils.evaluation_utils import CB_color_cycle 
+from src.utils.evaluation_utils import CB_color_cycle_flipped
 
 # Define rating buckets for readability
 rating_buckets = np.arange(0, 5.5, 0.5)
@@ -14,7 +14,7 @@ def rating_evolution_over_time(
     path,
     bucket=rating_buckets,
     min_ratings=1000,
-    colors=CB_color_cycle ,
+    colors=CB_color_cycle_flipped ,
 ):
 
     # changes unix timestamp to date

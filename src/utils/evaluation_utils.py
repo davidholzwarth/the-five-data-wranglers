@@ -19,6 +19,18 @@ colors = [
 ]
 
 CB_color_cycle = [
+    "#377eb8",
+    "#ff7f00",
+    "#4daf4a",
+    "#f781bf",
+    "#a65628",
+    "#984ea3",
+    "#999999",
+    "#e41a1c",
+    "#dede00",
+]  # colorblind friendly palette - credits to thriveth (https://gist.github.com/thriveth/8560036)
+
+CB_color_cycle_flipped = [
     "#dede00", 
     "#e41a1c", 
     "#999999", 
