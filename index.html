@@ -394,7 +394,7 @@ For a given user, we divided their ratings into two categories:
 
     </div>
 
-    <button onclick="toggleInfoBox()">Toggle Info Box</button>
+    <button id="toggle-button" onclick="toggleInfoBox()">Close Info Box</button>
 
     <div class="info-box" id="info-box">
         <p id="info-text">Click on the boxes to learn more!</p>
@@ -432,15 +432,23 @@ For a given user, we divided their ratings into two categories:
         } else {
             detailImage.style.display = 'none';
         }
+
+        // update the text of the button so that it says "Close" now
+        const toggleButton = document.getElementById('toggle-button');
+        toggleButton.textContent = "Close Info Box";
     }
     function toggleInfoBox() {
         const infoBox = document.getElementById('info-box');
+        const toggleButton = document.getElementById('toggle-button');
         infoBox.classList.toggle('collapsed');
+
+        if (infoBox.classList.contains('collapsed')) {
+            toggleButton.textContent = "Open Info Box";
+        } else {
+            toggleButton.textContent = "Close Info Box";
+        }
     }
 </script>
 
 </body>
 </html>
-
-
-
