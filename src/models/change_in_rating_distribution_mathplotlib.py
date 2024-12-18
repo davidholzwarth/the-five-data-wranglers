@@ -67,7 +67,7 @@ def rating_evolution_over_time(
         label="Total Ratings",
     )
     ax2.set_ylabel("Total number of ratings")
-    ax2.legend(loc="upper right")
+    ax2.legend(loc="upper left")
 
     # Customize x-axis
     ax1.set_xticks(range(len(ratings_count_filtered.index)))
@@ -145,5 +145,5 @@ def rating_evolution_with_rating_number(
         label="Number of Reviews",
     )
     ax2.set_ylabel("Number of ratings")
-    ax2.legend(loc="upper right")
+    ax2.legend(loc="upper left")
     fig.savefig(path, bbox_inches="tight")
