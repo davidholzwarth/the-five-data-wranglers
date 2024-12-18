@@ -37,6 +37,14 @@ title: Home
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+            opacity: 1;
+        }
+        .info-box.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding: 0;
         }
         .info-box img {
             max-width: 100%;
@@ -367,6 +375,8 @@ For a given user, we divided their ratings into two categories:
 
     </div>
 
+    <button onclick="toggleInfoBox()">Toggle Info Box</button>
+
     <div class="info-box" id="info-box">
         <p id="info-text">Click on the boxes to learn more!</p>
         <img id="detail-image" src="" alt="" style="display: none;" />
@@ -399,6 +409,10 @@ For a given user, we divided their ratings into two categories:
         } else {
             detailImage.style.display = 'none';
         }
+    }
+    function toggleInfoBox() {
+        const infoBox = document.getElementById('info-box');
+        infoBox.classList.toggle('collapsed');
     }
 </script>
 
