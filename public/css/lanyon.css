@@ -562,11 +562,6 @@ a.pagination-item:hover {
   display: block; 
   overflow: hidden;
   background-color: #202020;
-  transition: max-height 0.2s ease-out;
-}
-
-.submenu-items a {
-  display: block;
   color: white;
   text-decoration: none;
 }
