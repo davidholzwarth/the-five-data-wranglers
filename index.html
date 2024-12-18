@@ -37,12 +37,39 @@ title: Home
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+            opacity: 1;
+        }
+        .info-box.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding: 0;
         }
         .info-box img {
             max-width: 100%;
             height: auto;
             display: block;
             margin-top: 10px;
+        }
+        /* nicer button design*/
+        button {
+            background-color: #f9f9f9;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #e6e6e6;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
         }
     </style>
 
@@ -367,8 +394,10 @@ For a given user, we divided their ratings into two categories:
 
     </div>
 
+    <button id="toggle-button" onclick="toggleInfoBox()">Close Info Box</button>
+
     <div class="info-box" id="info-box">
-        <p id="info-text">Click on the boxes to learn more!</p>
+        <p id="info-text">Click on the boxes of the flowchart to learn more!</p>
         <img id="detail-image" src="" alt="" style="display: none;" />
         <p id="info-text2"></p>
     </div>
@@ -387,6 +416,10 @@ For a given user, we divided their ratings into two categories:
         const infoText = document.getElementById('info-text');
         const infoText2 = document.getElementById('info-text2');
         const detailImage = document.getElementById('detail-image');
+        const infoBox = document.getElementById('info-box')
+
+        // always open info box when hover area/hotspot is clicked
+        infoBox.classList.remove('collapsed');
 
         // Update the text
         infoText.innerHTML = description1; // Change textContent to innerHTML for rendering HTML content
@@ -399,11 +432,23 @@ For a given user, we divided their ratings into two categories:
         } else {
             detailImage.style.display = 'none';
         }
+
+        // update the text of the button so that it says "Close" now
+        const toggleButton = document.getElementById('toggle-button');
+        toggleButton.textContent = "Close Info Box";
+    }
+    function toggleInfoBox() {
+        const infoBox = document.getElementById('info-box');
+        const toggleButton = document.getElementById('toggle-button');
+        infoBox.classList.toggle('collapsed');
+
+        if (infoBox.classList.contains('collapsed')) {
+            toggleButton.textContent = "Open Info Box";
+        } else {
+            toggleButton.textContent = "Close Info Box";
+        }
     }
 </script>
 
 </body>
 </html>
-
-
-
