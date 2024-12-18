@@ -397,6 +397,10 @@ For a given user, we divided their ratings into two categories:
         const infoText = document.getElementById('info-text');
         const infoText2 = document.getElementById('info-text2');
         const detailImage = document.getElementById('detail-image');
+        const infoBox = document.getElementById('info-box')
+
+        // always open info box when hover area/hotspot is clicked
+        infoBox.classList.remove('collapsed');
 
         // Update the text
         infoText.innerHTML = description1; // Change textContent to innerHTML for rendering HTML content
