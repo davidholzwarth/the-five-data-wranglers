@@ -1,80 +1,129 @@
----
-layout: default
-title: Home
----
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Review of reviewers - Exposing Beer Reviewers' Biases</title>
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+            color: #0078d4;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        iframe, img {
+            display: block;
+            margin: 20px auto;
+            max-width: 90%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .scaled-image {
+            transform: scale(1);
+            transform-origin: center center;
+            max-width: 90%;
+        }
+
+        .flowchart {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .box {
+            position: relative;
+            width: 150px;
+            height: 100px;
+            margin: 20px;
+            background-color: #0078d4;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .box:hover .tooltip {
+            display: block;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .arrow {
+            width: 100px;
+            height: 2px;
+            background: #000;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .arrow:after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            border: 5px solid transparent;
+            border-left-color: #000;
+        }
+    </style>
 </head>
 <body>
-    <h1>1. Influence of reviewer's experience </h1>
-    <h2>1.1 Analysis of experience based on amount of reviews</h2>
-    <p>
-        In this part of the analysis, we want to investigate how the ratings provided by a user change over time. This can be shown by plotting the rating number on the x-axis and the relative distribution of ratings on the y-axis. In this section we would also have a second axis showing the total amount of ratings provided at the given rating number.
-    </p>
-    <iframe id="ratingdistributionforratingnumbersBA" src="src/plots/rating_evolution_given_amount_of_ratings_Beer_Advocate.html" height="600" width="700"></iframe>
-    <iframe id="ratingdistributionforratingnumbersRB" src="src/plots/rating_evolution_given_amount_of_ratings_Rate_Beer.html" height="600" width="700"></iframe>
-
-    <p>
-        The plots show that the relative distribution of extreme ratings, such as the top- and bottom-tier, decreases when the rating number increases. We can also see that the reviewers in Beer Advocate tend to provide a higher rating on average, than the reviewers in Rate Beer. Later on we will see that this interesting finding could be due to the difference in the user's origin. Nearly all the users in the BeerAdvocate database are from the US whereas the distribution of the users' origin in Rate Beer is a bit more diverse. Before we make any conclusions on how the number of reviews provided might affect the rating provided, we should look into whether there exists an overall change in the relative distribution of ratings over time regardless of the number of ratings provided earlier on. 
-    </p>
-
-    <iframe id="ratingdistributionovertimeBA" src="src/plots/rating_evolution_over_time_Beer_Advocate.html" height="600" width="700"></iframe>
-    <iframe id="ratingdistributionovertimeRB" src="src/plots/rating_evolution_over_time_Rate_Beer.html" height="600" width="700"></iframe>
-
-    <p>
-        For the Beer Advocate dataset we can see an opposite tendency of previous finding, as the amount of top-tier ratings increases over time. The previous finding can therefore not be explained only by the change in ratings over time. Furthermore, a high spike in the number of reviews in 2014 indicated that a lot of the users in BeerAdvocate has provided several reviews during that year. 
-
-        For the distribution of ratings in the Rate Beer dataset there does seem to be a similar tendency as the previous plot of the relation between rating number and rating distribution. The increase in number of ratings provided exhibits a more linear trend compared to the Beer Advocate dataset. For the Rate Beer dataset we can not conclude that the amount of rating provided is caused by the rating number as there appears to be a similar trend over the years, which could be caused by other factors such as an increase in the amount of premium beers available. If beers in general tend to have a higher standard, this could make it hard to differentiate between the different beers thus could lead to a reduction of top- and bottom-tier ratings over the years.
-    </p>
-
-    <h1>3. Influence of the season</h1>
-    <h2>3.1 Influence of the season on average rating</h2>
-    <p>
-        Next we look at whether the time of year, the season, has any influence on ratings. We grouped the ratings into months, as a less fine grained division into quarters would be very ingranular, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore, if the time of year leads to a general rating "high" or "low", for example reviewers being more satisfied with their beer in the summer rather than the winter.
-    </p> 
-
-    <iframe id="averageratingpermonth" src="src/plots/average_rating_per_month.html" height="600" width="700"></iframe>
-
-
-    <p>
-        We see that the average ratings do not change with the month, at least not significantly, thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the results are kind of boring. However, lets also have a look at how the beers get rated throughut the year depending on the beer style.
-    </p>
-
-    <h2>3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
-    <p>
-        Before we analyse the rating, let's first check which beer is a "summery" beer and which beers are "wintery", by comparing the amount of each reviewed by month. The graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year, in order to not crowd the graph with straight and uninteresting lines. The value of 14 was chosen as it offers a nice balance between not hiding important data and now not crowding the graph. The function also removes beer styles which have less than 500 reviews for at least one month, in order to not flood the analysis with beers which have few reviews, where the change in review count might not be significant.
-    </p>
-
-    <iframe id="singleplotframe" src="src/plots/beer_style_ranking_by_amount.html" height="700" width="700"></iframe>
-
-    <p>Beers such as:
-        <ul>
-            <li>Czech Pilsner</li>
-            <li>Session IPA</li>
-            <li>Grodziskie </li>
-            <li>Kölsch and </li>
-            <li>Radler/Shandy</li>
-        </ul>
-        are rated more frequently in the summer, while:
-        <ul>
-            <li>English Strong Ale</li>
-            <li>Session IPA</li>
-            <li>Dunkler Bock and</li>
-            <li>Old ale</li>
-        </ul>
-        are reviewed more frequently in the winter. 
-
-        There is also a fun peak of Oktoberfestbeer during the months of September and Oktober, whcih (coincidentally?) coincides with the dates of the Oktoberfest celebrations, in which many cities celebrate the Oktoberfest-related festivals. With this in mind, lets have a look at how the ratings change across the year.
-
-        Similarly to the previous graph, we have introduced a review count cutoff of 500, and beers with only a slight change in rating, in this case 0.1 points, are filtered out.
-    </p>
-    <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
-
+    <h1>Data Story</h1>
+    <p>This is a placeholder. Put the data story here gagagaga.</p>
+    <iframe src="src/plots/beer_style_ranking_by_amount.html" width="80%" height="500px" frameborder="0"></iframe>
+    <iframe src="src/plots/combined_distribution_and_rating_difference.html" width="80%" height="500px" frameborder="0"></iframe>
+    <img src="src/plots/imgs/differences_exp_inexp.png" alt="Differences Plot" class="scaled-image">
+    <img src="src/plots/imgs/difference_foreign_domestic_barchart.png" alt="Differences Plot" class="scaled-image">
+    <!--
+    <h2>Interactive Flowchart</h2>
+    <div class="flowchart">
+        <div class="box">
+            Start
+            <div class="tooltip">Test 1</div>
+        </div>
+        <div class="arrow"></div>
+        <div class="box">
+            Step 1
+            <div class="tooltip">Test 2</div>
+        </div>
+        <div class="arrow"></div>
+        <div class="box">
+            End
+            <div class="tooltip">Test 3</div>
+        </div>
+    </div>
+    -->
 </body>
 </html>
-
-
-
