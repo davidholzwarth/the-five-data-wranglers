@@ -558,7 +558,7 @@ a.pagination-item:hover {
 }
 
 .submenu-items {
-  padding: .5rem 2rem;
+  padding: .5rem 3rem;
   display: block; 
   overflow: hidden;
   background-color: #202020;
@@ -573,4 +573,8 @@ a.pagination-item:hover {
 
 .submenu-items a:hover {
   background-color: rgba(255,255,255,.1);
+}
+
+.sidebar-nav-item.special-padding  {
+  padding-left: 2rem;
 }
