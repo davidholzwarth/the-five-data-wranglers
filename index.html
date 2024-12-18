@@ -96,10 +96,10 @@ title: Home
 
     <h2 id="section1-2">1.2 Experience analysis for 10 most reviewed beers</h2>
     <p>Alright, but could these general trends of the experienced reviewers giving less extreme ratings be observed if we zoom on individual beers? For this part, we consider 50 reviews given as the threshold to be an experienced beer reviewer. This classifies roughly half of the users as experienced (43% in the BeerAdvocate dataset, 51% in the RateBeer dataset). We then take the 10 most reviewed beers of BeerAdvocate and RateBeer and plot the distribution of the ratings for new, experienced and all reviewers.</p>
-    <!-- TODO: Add figure 1 of Anthony-->
+    <img src="src/plots/imgs/top10styles_beer_advocate.png" alt="Plot of the top 10 most reviewed beer styles for Beer Advocate">
     <p>From these figures we see a few striking particularities. Firstly, the  experienced reviewers consistently provide less top-tier ratings than the new reviewers which aligns with the findings of the previous section. Secondly, the ratings are dominated by the experienced reviewers, which do not rate popular beer styles well; in fact they rate them worse than inexperienced users do.</p>
     <p>Is this also the case for RateBeer?</p>
-    <!--TODO: Add figure 2 of Anthony-->
+    <img src="src/plots/imgs/top10styles_rate_beer.png" alt="Plot of the top 10 most reviewed beer styles for Rate Beer">
     <p>Generally, the previous observations also hold for RateBeer with experienced reviewers giving less extreme ratings than new ones while still dominating the mixed ratings. It also seems that greater indecisiveness exists for the new reviewers as their ratings are more dispersed than the experienced ones. A particular case is the Budweiser beer in which new reviewers give both the highest and lowest ratings. Perhaps the greater occurrence of extreme ratings from the new reviewers is partly due to this indecisiveness or a lack of knowledge on what experienced reviewers agree makes a “good” beer.</p>
 
     <h2 id="section1-3">1.3 Analysis of experience based on the user's vocabulary</h2>

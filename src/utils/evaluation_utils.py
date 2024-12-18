@@ -30,6 +30,18 @@ CB_color_cycle = [
     "#dede00",
 ]  # colorblind friendly palette - credits to thriveth (https://gist.github.com/thriveth/8560036)
 
+CB_color_cycle_flipped = [
+    "#dede00", 
+    "#e41a1c", 
+    "#999999", 
+    "#984ea3", 
+    "#a65628", 
+    "#f781bf", 
+    "#4daf4a", 
+    "#ff7f00",
+    "#377eb8"  
+]  # colorblind friendly palette - credits to thriveth (https://gist.github.com/thriveth/8560036)
+
 alpha_val = 0
 
 colors_rating_distribution = [
