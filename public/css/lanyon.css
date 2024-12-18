@@ -558,10 +558,15 @@ a.pagination-item:hover {
 }
 
 .submenu-items {
-  padding: 0 3rem;
+  padding: 0rem 3rem;
   display: block; 
   overflow: hidden;
   background-color: #202020;
+  transition: max-height 0.2s ease-out;
+}
+
+.submenu-items a {
+  display: block;
   color: white;
   text-decoration: none;
 }
