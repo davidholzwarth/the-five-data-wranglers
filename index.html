@@ -180,7 +180,7 @@ title: Home
 
     <h2 id="section2-2">2.2 Analyzing the influence of the user-brewery distance</h2>
     <p>So far, we have only looked at countries in general or the distinction between foreign and domestic beers. However, it would also be interesting to conduct a more fine-grained analysis and ask whether the distance between the user’s home country and the brewery’s location has an impact on the rating. The assumption is that geographically closer countries might share similar drinking preferences and, consequently, make similar choices of beer.</p>
-    <p>Could it be that beers from breweries located closer to the user’s location are rated more highly because the user’s taste is more accustomed to the local beer culture? Or could the exact opposite be true, with beer drinkers seeking exciting new flavors from distant places? We aim to investigate this to determine whether the user-brewery distance is a significant bias.</p>
+    <p>Could it be that beers from breweries located closer to the user’s location are rated higher because the user’s taste is more accustomed to the local beer culture? Or could the exact opposite be true, with beer drinkers seeking exciting new flavors from distant places? We aim to investigate this to determine whether the user-brewery distance is a significant bias.</p>
     <p>The following plot illustrates the distribution of user ratings for beers from breweries at various distances. The x-axis shows the binned distances between the breweries and the user. The differently colored segments in the stacked bars indicate the frequency of the discretized ratings for breweries at a given distance from the user. However, it is evident that some bars are more meaningful than others due to being based on more data. Therefore, we have also included a line indicating the number of ratings for each user-brewery distance. We show the plot for both datasets on which our analysis was based, in order to be able to see whether there are any major differences.</p>
 
 
@@ -196,7 +196,7 @@ title: Home
     <h1 id="section3">3 Influence of the season</h1>
     <h2 id="section3-1">3.1 Influence of the season on the ratings</h2>
     <p>Next, we look at the extent to which the time of year affects the ratings. Seasonal changes can clearly be seen as a bias-provocative feature, as the time of the year shouldn’t change anything about the taste of a beer. We grouped the ratings into the months in which they were written, as a less fine-grained division into quarters would be very imprecise, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore if the time of year leads to a general rating “high” or “low”, for example, reviewers being more satisfied with their beer in the summer rather than the winter.</p>
-    <p>A first analysis results that with an average rating of 3.285 and <b>standard deviation</b> of only <b>0.019</b>, the ratings do <b>not</b> change over time <b>significantly</b>. The highest average rating for the month was in February, with an average rating of 3.305, while the month with the lowest rating was August, with an average rating of 3.244. That is a negligible difference of just 0.061 out of five points.</p>
+    <p>A first analysis results that with an average rating of 3.285 and <b>standard deviation</b> of only <b>0.019</b>, the ratings do <b>not</b> change over time <b>significantly</b>. The highest average rating for the month was in February, with an average rating of 3.305, while the month with the lowest rating was August, with an average rating of 3.244. That is a <b>negligible difference of just 0.061</b> out of five points.</p>
     <p>Thus, the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the first results do not show any signs of large biases. However, let's also have a look at how the beers get rated throughout the year depending on the beer style.</p>
 
     <h2 id="section3-2">3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
@@ -227,7 +227,7 @@ title: Home
 
     <h1 id="section4">4 Taking bias into account</h1>
     <p>
-        Finally, let's now turn to the final section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers and how they ultimately affect the ratings, but some might still wonder:
+        Finally, let's now turn to the last section of our analysis. In the last three sections, we have extensively examined various types of biases among beer reviewers and how they ultimately affect the ratings, but some might still wonder:
         <q>What's the point of all this?</q>
         <q>Who benefits from knowing whether a beer reviewer is biased in their decision?</q>
         Also, we only evaluated each possible bias factor on its own, not connecting them with each other. Possibly some biases can only be seen when set into relation with each other.
@@ -404,7 +404,7 @@ For a given user, we divided their ratings into two categories:
         <p id="info-text2"></p>
     </div>
 
-    <p>On that end, we have parsed ratings from <b>230,000</b> reviews from the BeerAdvocate dataset, trained a neural network on predicting the user’s opinion and evaluated it on a test dataset. When only including the most basic information about the beer, namely the beer type and the beer’s average rating, the model can only correctly predict the preference in 62.5% of the reviews - not much better than guessing by chance. Including the used vocabulary regarding the user and beer, this raises the accuracy to about 75.6% emphasizing the efficacy of the extracted vocabulary. Additionally using all aforementioned biases, gives us another <b>3.7%</b> of accuracy - clearly showing the susceptibility of the reviewers towards the biases.
+    <p>We have parsed ratings from <b>230,000</b> reviews from the BeerAdvocate dataset, trained the neural network on predicting the user’s opinion and evaluated it on a test dataset. When only including the most basic information about the beer, namely the beer type and the beer’s average rating, the model can only correctly predict the preference in 62.5% of the reviews - not much better than guessing by chance. Including the used vocabulary regarding the user and beer, this raises the accuracy to about 75.6% emphasizing the efficacy of the extracted vocabulary. Additionally using all aforementioned biases, gives us another <b>3.7%</b> of accuracy - clearly showing the susceptibility of the reviewers towards the biases.
     </p>
 
     <iframe src="src/plots/ml_numbers.html" width="820" height="480" style="border:none; margin-left: -50px"></iframe>
