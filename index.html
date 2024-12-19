@@ -194,9 +194,9 @@ title: Home
 
     <h1 id="section3">3 Influence of the season</h1>
     <h2 id="section3-1">3.1 Influence of the season on the ratings</h2>
-    <p>Next, we look at the extent to which the time of year affects the ratings. Seasonal changes can clearly be seen as a bias-provocative feature, as the time of the year shouldn’t change anything about the taste of a beer. We grouped the ratings into the months in which they were written, as a less fine grained division into quarters would be very imprecise, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore if the time of year leads to a general rating “high” or “low”, for example, reviewers being more satisfied with their beer in the summer rather than the winter.</p>
+    <p>Next, we look at the extent to which the time of year affects the ratings. Seasonal changes can clearly be seen as a bias-provocative feature, as the time of the year shouldn’t change anything about the taste of a beer. We grouped the ratings into the months in which they were written, as a less fine-grained division into quarters would be very imprecise, and not enable us to see how trends develop as the year progresses, while a grouping into weeks or days would produce a lot of data and big dataframes. Let's first explore if the time of year leads to a general rating “high” or “low”, for example, reviewers being more satisfied with their beer in the summer rather than the winter.</p>
     <p>A first analysis results that with an average rating of 3.285 and <b>standard deviation</b> of only <b>0.019</b>, the ratings do <b>not</b> change over time <b>significantly</b>. The highest average rating for the month was in February, with an average rating of 3.305, while the month with the lowest rating was August, with an average rating of 3.244. That is a negligible difference of just 0.061 out of five points.</p>
-    <p>Thus the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the first results do not show any signs of large biases. However, let's also have a look at how the beers get rated throughout the year depending on the beer style.</p>
+    <p>Thus, the hypothesis that the time of year has a general effect on the ratings in total does not hold, rather the first results do not show any signs of large biases. However, let's also have a look at how the beers get rated throughout the year depending on the beer style.</p>
 
     <h2 id="section3-2">3.2 Influence on the Season for Ratings for Individual Beer Styles</h2>
     <p>To start, let's first check which beer is a “summery” beer and which beers are “wintery”, by comparing the amount of each reviewed by month. This will allow us to later gauge if seasonality of the beer has an effect on the rating. Since this is a measure of popularity, we rank the beers by number of reviews. A seasonal beer should display a noticeable change in rank over the months of the year. Thus, the graph below filters out beer styles which do not show a difference of at least 14 ranks throughout the entire year. This threshold was chosen as it offers a nice balance between not hiding important data and not crowding the graph. Furthermore, we remove beer styles with less than 500 reviews for at least one month to not flood the analysis with beers which have few reviews, where the change in review is nominal.</p>
@@ -222,7 +222,7 @@ title: Home
     </p>
     <iframe id="rankingbyaveragescore" src="src/plots/beer_style_ranking_by_avg_score.html" height="600" width="700"></iframe>
 
-    <p>Comparing the list of summer and winter beers that we created above, it is difficult to find any relation between seasonality of a beer and its rating. Only four beers that are present in the first graph are also present in the second one, yet their respective two lines show few similarities, especially the peaks in rating amount don’t coincide with peaks in rating. Thus we conclude that seasonality alone has little to no impact on the beer’s rating.  </p>
+    <p>Comparing the list of summer and winter beers that we created above, it is difficult to find any relation between seasonality of a beer and its rating. Only four beers that are present in the first graph are also present in the second one, yet their respective two lines show few similarities, especially the peaks in rating amount don’t coincide with peaks in rating. Thus, we conclude that seasonality alone has little to no impact on the beer’s rating.  </p>
 
     <h1 id="section4">4 Taking bias into account</h1>
     <p>
@@ -408,7 +408,7 @@ For a given user, we divided their ratings into two categories:
 
     <iframe src="src/plots/ml_numbers.html" width="820" height="480" style="border:none; margin-left: -50px"></iframe>
 
-    <p>Although this may not sound like much compared to the text features, it is a significant difference—especially when considering the vast amount of money and effort that major companies invest in automated advertising to achieve even a few percentage points of improvement in hit rates. These small improvements often result in significantly higher profits. Also the text features very likely include parts of the user bias as well - meaning that a user also writes more critical reviews about beers he’s biased about.
+    <p>Although this may not sound like much compared to the text features, it is a significant difference—especially when considering the vast amount of money and effort that major companies invest in automated advertising to achieve even a few percentage points of improvement in hit rates. These small improvements often result in significantly higher profits. Also, the text features very likely include parts of the user bias as well-meaning that a user also writes more critical reviews about beers he’s biased about.
     </p>
 
     <h1>Conclusion</h1>
